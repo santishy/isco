@@ -11,6 +11,13 @@ class ModelCategorias extends CI_Model
 		$query=$this->db->get('categorias');
 		return $query;
 	}
+	function getCategory($nombre)
+	{
+		$this->db->where('nombre',$nombre);
+		$this->db->select('*');
+		$query=$this->db->get('categorias');
+		return $query;
+	}
 	function addCategory($data)
 	{
 		$query=$this->db->insert('categorias',$data);

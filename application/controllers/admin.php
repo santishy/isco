@@ -17,9 +17,11 @@ class Admin extends CI_Controller {
 
 	public function addProducto()
 	{
-		$this->form_validation->set_rules('categoria','Categoria','required|callback_validarProd|trim');
-		$this->form_validation->set_rules('precio','Precio','required|trim');
+		//$this->form_validation->set_rules('categoria','Categoria','required|callback_validarProd|trim');
+		$this->form_validation->set_rules('precio','Precio','required|trim|callback_validarProd');
 		$this->form_validation->set_rules('descripcion','Descripcion','required|trim');
+		$this->form_validation->set_rules('nombreprod','Nombre','required|trim');
+		$this->form_validation->set_rules('rutaImagen','Imagen','required|trim');
 		//$this->form_validation->set_rules('destacado','Destacado','required');
 		if($this->form_validation->run()===false)
 		{
@@ -28,12 +30,26 @@ class Admin extends CI_Controller {
 		}
 		else 
 		{
-			$data=$this->input->post();
+			$data['nombreprod']=$this->input->post('nombreprod');
+			$data['precio']=$this->input->post('precio');
+			$data['id_categoria']=$this->input->post('id_categoria');
+			$data['descripcion']=$this->input->post('descripcion');
+			$data['destacado']=$this->input->post('destacado');
+			$img['ruta']=$this->input->post('rutaImagen');
 			$query=$this->ModelProductos->addProducto($data);
+			$maxId=$this->ModelProductos->maxId();
 			if($query)
 				$data['mensaje']="Insercion Correcta";
 			else 
 				$data['mensaje']="Insercion Incorrecta";
+			if(strlen($img['ruta'])>0)
+			{
+			 	foreach ($maxId->result() as $row) 
+			 	{
+			 		$img['id_producto']=$row->id_producto;
+			 	}
+			 	$query=$this->ModelProductos->addImgProd($img);
+			}
 			$this->frmProducto($data);
 		}
 		
@@ -69,35 +85,33 @@ class Admin extends CI_Controller {
 	function addCategory()
 	{
 		$data['nombre']=$this->input->post('nombre');
-		$this->ModelCategorias->addCategory($data);
-		$query=$this->ModelCategorias->getMaxId();
-		echo json_encode($query->result());
+		$num=$this->ModelCategorias->getCategory($data['nombre']);
+		if($num->num_rows()>0)
+			$query['ban']=0;
+		else
+		{
+			$query['ban']=1;
+			$this->ModelCategorias->addCategory($data);
+			$consulta=$this->ModelCategorias->getMaxId();
+			foreach ($consulta->result() as $row) 
+			{
+				$query['nombre']=$row->nombre;
+				$query['id_categoria']=$row->id_categoria;
+			}
+		}
+		echo json_encode($query);
 	}
 	public function validarProd($str)
 	{
 		$data=$this->input->post();
-		$ban=true;
-		foreach ($data as $key => $value) 
+		$query=$this->ModelProductos->validarProd($data);
+		if($query->num_rows()>0)
 		{
-			if(strlen($data[$key])==0)
-			{
-				$ban=false;
-				break;
-			}
-		}
-		if($ban)
-		{
-			$query=$this->ModelProductos->validarProd($data);
-			if($query->num_rows()>0)
-			{
-				$this->form_validation->set_message('validarProd','Ya existe un accesorio con las mismas especificaciones');
-				return false;
-			} 
-			else 
-				return true;
-		}
-		else
+			$this->form_validation->set_message('validarProd','Ya existe un accesorio con las mismas especificaciones');
 			return false;
+		} 
+		else 
+			return true;
 	}
 
 }
