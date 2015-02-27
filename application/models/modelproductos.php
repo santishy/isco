@@ -25,5 +25,23 @@ class ModelProductos extends CI_Model
 		$query=$this->db->query('(select * from productos where nombreprod="'.$data['nombreprod'].'" and descripcion="'.$data['descripcion'].'" and id_categoria='.$data['id_categoria'].')');
 		return $query;
 	}
+	/*--------------------------------caracteristicas----------------------------------------*/
+	function getCaracteristica($data)
+	{
+		$query=$this->db->query('select *from caracteristicas where id_producto='.$data['id_producto'].'
+			and etiqueta_c="'.$data['etiqueta_c'].'" and caracteristica="'.$data['caracteristica'].'";');
+		return $query;
+	}
+	function addCaracteristica($data)
+	{
+		$query=$this->db->insert('caracteristicas',$data);
+		return $query;
+	}
+
+	function maxCaracteristica()
+	{
+		$query=$this->db->query('select *from caracteristicas order by desc id_caracteristica')	;
+		return $query;
+	}
 }
 ?>

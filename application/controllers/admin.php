@@ -26,6 +26,7 @@ class Admin extends CI_Controller {
 		if($this->form_validation->run()===false)
 		{
 			$data['mensaje']="";
+			$data['id_producto']="";
 			$this->frmProducto($data);
 		}
 		else 
@@ -38,18 +39,19 @@ class Admin extends CI_Controller {
 			$img['ruta']=$this->input->post('rutaImagen');
 			$query=$this->ModelProductos->addProducto($data);
 			$maxId=$this->ModelProductos->maxId();
+			foreach ($maxId->result() as $row) 
+			{
+				$img['id_producto']=$row->id_producto;
+			}
 			if($query)
 				$data['mensaje']="Insercion Correcta";
 			else 
 				$data['mensaje']="Insercion Incorrecta";
 			if(strlen($img['ruta'])>0)
 			{
-			 	foreach ($maxId->result() as $row) 
-			 	{
-			 		$img['id_producto']=$row->id_producto;
-			 	}
 			 	$query=$this->ModelProductos->addImgProd($img);
 			}
+			$data['id_producto']=$img['id_producto'];
 			$this->frmProducto($data);
 		}
 		
@@ -80,8 +82,23 @@ class Admin extends CI_Controller {
 		$data['query']=$this->ModelCategorias->getCategorias();
 		$this->load->view('admin/header',$data);
 		$this->load->view('admin/addproducto');
+		$this->load->view('admin/caracteristicas');
 		$this->load->view('admin/footer');
 	}
+		public function validarProd($str)
+	{
+		$data=$this->input->post();
+		$query=$this->ModelProductos->validarProd($data);
+		if($query->num_rows()>0)
+		{
+			$this->form_validation->set_message('validarProd','Ya existe un accesorio con las mismas especificaciones');
+			return false;
+		} 
+		else 
+			return true;
+	}
+	/*----------------------------------Categorias ------------------------------------------*/
+	# agregar categoria---------
 	function addCategory()
 	{
 		$data['nombre']=$this->input->post('nombre');
@@ -101,17 +118,46 @@ class Admin extends CI_Controller {
 		}
 		echo json_encode($query);
 	}
-	public function validarProd($str)
+	/*------------------------------------Caracteristicas-------------------------------------*/
+	# agregar Caracteristica-----
+	function addCaracteristica()
 	{
 		$data=$this->input->post();
-		$query=$this->ModelProductos->validarProd($data);
-		if($query->num_rows()>0)
+		$ban=$this->validarEmpty($data);
+		if($ban)
 		{
-			$this->form_validation->set_message('validarProd','Ya existe un accesorio con las mismas especificaciones');
-			return false;
-		} 
-		else 
-			return true;
+			$query=$this->ModelProductos->getCaracteristica($data);
+			if($query->num_rows()==0)
+			{
+
+				$query=$this->ModelProductos->addCaracteristica($data);
+				$query=$this->ModelProductos->maxCaracteristica();
+				foreach ($query->result() as $row) 
+				{
+					$data['ban']=1;
+					$data['etiqueta_c']=$row->etiqueta_c;
+					$data['caracteristica']=$row->caracteristica;
+					$data['id_caracteristica']=$row->id_caracteristica;
+				}
+			}
+			else 
+				$data['ban']=2;
+		}
+		else
+			$data['ban']=0;
+		echo json_encode($data);
+	}
+	function validarEmpty($data)
+	{
+		$ban=true;
+		foreach ($data as $key => $value) {
+			if(strlen($data[$key])==0)
+			{
+				$ban=false;
+				break;
+			}
+		}
+		return $ban;
 	}
 
 }

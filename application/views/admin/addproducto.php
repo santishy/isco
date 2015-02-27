@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col s6">
+
+	<div class="col s4">
 		<div class="card-panel light-withe light-2">
 			<div class="row">
 				<h4>Producto</h4>
@@ -67,8 +67,10 @@
 			</form>
 		</div>
 	</div>
-</div>
-<?php $this->load->view('modales/modalCategoria')?>
+
+
+<?php $this->load->view('modales/modalCategoria')?><!--Ventana modal de agregar categoria-->
+
 <script >
 	$(document).on('ready',function(){
 	var ruta=$(".rutaFunctions").data('ruta');

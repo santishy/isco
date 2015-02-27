@@ -45,3 +45,49 @@ function subirImagen(e)
 			}
 		}
 }
+function addCaracteristica()
+{
+	var rutaCaracteristicas=$("#rutaCaracteristicas").data('addcaracteristica');
+	$.ajax({
+		url:rutaCaracteristicas,
+		beforeSend:function()
+		{
+
+		},
+		type:'post',
+		data:frmCaracteristicas.serialize(),
+		dataType:'text',
+		success:function(resp)
+		{
+			switch(resp.ban)
+			{
+				case 1:
+				case "1":
+					addTablaCaracteristica(resp);
+					break;
+				case "0":
+				case 0;
+					alert('Complete los campos');
+					break;
+				case 2:
+				case "2":
+					alert('Ya tiene agregada esa etiqueta y caracteristica');
+					break
+				default:
+					break;
+			}
+		},
+		error:function(error,xhr,estado)
+		{
+			alert(error+" "+estado+" "+xhr);
+		},
+		complete:function()
+		{
+
+		}
+	});
+}
+function addCaracteristica(resp)
+{
+	$("#TablaCaracteristicas").append('<tr><td>'+resp.etiqueta_c+'</td><td>'+resp.caracteristica+'</td><td><button>X</eliminar></td></tr>')
+}

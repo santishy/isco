@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/materialize.min.css" media="screen,projection">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<script  src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -29,6 +28,6 @@
 		    </div>
 		  </div>
 		</nav>
-	<div class="container">
+	<div class="row">
 		<!-- Dropdown Structure -->
 		
