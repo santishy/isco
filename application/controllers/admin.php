@@ -150,6 +150,52 @@ class Admin extends CI_Controller {
 			$vec['ban']=0;
 		echo json_encode($vec);
 	}
+	#----------eliminar caracteristica---------------------------
+
+	function eliminarCaracteristica()
+	{
+		$data=$this->input->post();
+		$query=$this->ModelProductos->eliminarCaracteristica($data);
+		echo $query;
+	}
+	/***************************************ESPECIFICACIONES**********************************************/
+	#AGREGAR ESPECIFICACION
+
+	function addEspecificacion()
+	{
+
+		$data=$this->input->post();
+		$ban=$this->validarEmpty($data);
+		if($ban)
+		{
+			$query=$this->ModelProductos->getEspecificacion($data);
+			if($query->num_rows()==0)
+			{
+				$vec=array();
+				$query=$this->ModelProductos->addEspecificacion($data);
+				$query=$this->ModelProductos->maxEspecificacion();
+				foreach ($query->result() as $row) 
+				{
+					$vec['ban']=1;
+					$vec['etiqueta_e']=$row->etiqueta_e;
+					$vec['especificacion']=$row->especificacion;
+					$vec['id_especificacion']=$row->id_especificacion;
+				}
+			}
+			else 
+				$vec['ban']=2;
+		}
+		else
+			$vec['ban']=0;
+		echo json_encode($vec);
+	}
+	#ELIMINAR ESPECIFICACION
+	function eliminarEspecificacion()
+	{
+		$data=$this->input->post();
+		$query=$this->ModelProductos->eliminarEspecificacion($data);
+		echo $query;
+	}
 	function validarEmpty($data)
 	{
 		$ban=true;

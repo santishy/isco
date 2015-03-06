@@ -3,7 +3,7 @@
 		<div class="row">
 			<h4>Caracteristicas</h4>
 			<form id="frmCaracteristicas" name="frmCaracteristicas" action="<?=base_url()?>js/functions.js">
-				<div id="rutaCaracteristicas"class="input-field col s12 " data-addcaracteristica="<?=base_url()?>admin/addCaracteristica">
+				<div id="rutaCaracteristicas"class="input-field col s12 " data-rutafeatures="<?=base_url()?>admin/eliminarCaracteristica" data-addcaracteristica="<?=base_url()?>admin/addCaracteristica">
 					<input id="etiqueta_c" name="etiqueta_c" type="text" class="validate " <?php if(strlen($id_producto)==0) echo 'disabled'; else echo 'enabled';?>>
 					<input type="hidden" name="id_producto" id="id_producto_c" value="<?=$id_producto?>">
         			<label for="etiqueta_c">Etiqueta</label>	
@@ -26,10 +26,10 @@
 	<div class="card-panel light-withe light-2">
 		<div class="row">
 			<h4>Especificaciones</h4>
-			<form>
-				<div class="input-field col s12 ">
+			<form name="frmEspecificaciones" id="frmEspecificaciones">
+				<div id="rutaEspecificaciones" class="input-field col s12 " data-addespecificacion="<?=base_url()?>admin/addEspecificacion">
 					<input id="etiqueta_e" name="etiqueta_e" type="text" class="validate "  <?php if(strlen($id_producto)==0) echo 'disabled'; else echo 'enabled';?>>
-					<input type="hidden" name="id_producto" id="id_producto_e">
+					<input type="hidden" name="id_producto" id="id_producto_e" value="<?=$id_producto?>">
         			<label for="etiqueta_e">Etiqueta</label>	
 				</div>
 				<div class="input-field col s12 ">
@@ -37,16 +37,17 @@
         			<label for="especificacion">Especificacion</label>	
 				</div>
 				<div class="input-field col s8 ">
-					<button class="btn waves-effect waves-light  light-blue darken-2" type="button" >Enviar
+					<button id="btn_addEspecificacion" class="btn waves-effect waves-light  light-blue darken-2" type="button" >Enviar
 					    <i class="mdi-content-send right"></i>
 					</button>
 				</div>
 				<div class="input-field col s4 ">
-					<a class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-action-open-in-new"></i></a>
+					<a id="btn_modalEspecificaciones" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-action-open-in-new"></i></a>
 				</div>
 			</form>
 		</div>
 	</div><!--fin del panel caracteristicas-->
 </div><!--div principal-->
 <?php $this->load->view('modales/caracteristicas');?>
+<?php $this->load->view('modales/especificaciones');?>
 <script src="<?=base_url()?>js/caracteristicas.js"></script>

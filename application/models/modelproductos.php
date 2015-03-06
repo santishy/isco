@@ -25,6 +25,11 @@ class ModelProductos extends CI_Model
 		$query=$this->db->query('(select * from productos where nombreprod="'.$data['nombreprod'].'" and descripcion="'.$data['descripcion'].'" and id_categoria='.$data['id_categoria'].')');
 		return $query;
 	}
+	function getLastCaracteristicas()
+	{
+		$query=$this->db->query('select *from productos order by id_producto desc limit 5;');
+		return $query;
+	}
 	/*--------------------------------caracteristicas----------------------------------------*/
 	function getCaracteristica($data)
 	{
@@ -32,11 +37,7 @@ class ModelProductos extends CI_Model
 			and etiqueta_c="'.$data['etiqueta_c'].'" and caracteristica="'.$data['caracteristica'].'";');
 		return $query;
 	}
-	function getLastCaracteristicas()
-	{
-		$query=$this->db->query('select *from productos order by id_producto desc limit 5;');
-		return $query;
-	}
+	
 	function addCaracteristica($data)
 	{
 		$query=$this->db->insert('caracteristicas',$data);
@@ -46,6 +47,34 @@ class ModelProductos extends CI_Model
 	function maxCaracteristica()
 	{
 		$query=$this->db->query('select id_caracteristica,etiqueta_c,caracteristica from caracteristicas where id_caracteristica=(select max(id_caracteristica) from caracteristicas);');
+		return $query;
+	}
+	function eliminarCaracteristica($data)
+	{
+		$query=$this->db->delete('caracteristicas',$data);
+		return $query;
+	}
+	/*--------------------------------especifiaciones----------------------------------------*/
+	function getEspecificacion($data)
+	{
+		$query=$this->db->query('select *from especificaciones where id_producto='.$data['id_producto'].'
+			and etiqueta_e="'.$data['etiqueta_e'].'" and especificacion="'.$data['especificacion'].'";');
+		return $query;
+	}
+	function addEspecificacion($data)
+	{
+		$query=$this->db->insert('especificaciones',$data);
+		return $query;
+	}
+
+	function maxEspecificacion()
+	{
+		$query=$this->db->query('select id_especificacion,etiqueta_e,especificacion from especificaciones where id_especificacion=(select max(id_especificacion) from especificaciones);');
+		return $query;
+	}
+	function eliminarEspecificacion($data)
+	{
+		$query=$this->db->delete($data);
 		return $query;
 	}
 }

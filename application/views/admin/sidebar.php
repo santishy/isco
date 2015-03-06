@@ -18,13 +18,13 @@
 			<tbody>
 				<?php foreach ($caracteristicas->result() as $row) {?>
 				<tr>
-					<td><a class='dropdown-button btn' href='#' data-activates='dropdown2' style="padding:0 15px;margin:5px"><i class="mdi-action-view-headline"></i></a>
-							<!-- Dropdown Structure -->
-							<ul id='dropdown2' class='dropdown-content'>
-								<li><a href="#!">Caracteristica</a></li>
-							    <li><a href="#!">Especificacion</a></li>
-							    <li><a href="#!">Editar</a></li>
-							</ul></td>
+					<td>
+						<a class='dropdown-button btn' href='#' data-activates='dropdown2' style="padding:0 15px;margin:5px"><i class="mdi-action-view-headline"></i></a>
+						<!-- Dropdown Structure -->
+						<ul id='dropdown2' class='dropdown-content'>
+						    <li class="edit" data-id="<?=$row->id_producto?>"><a href="#!">Editar</a></li>
+						</ul>
+					</td>
 					<td>
 						<?=$row->nombreprod?>
 					</td>
