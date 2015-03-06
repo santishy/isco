@@ -2,7 +2,7 @@
     <div class="modal-content">
       <h4>Caracteristicas</h4>
       <div class="divider"></div>
-      	<table id="tableCaracteristicas" table="striped">
+      	<table id="tableCaracteristicas" class="bordered">
           <thead>
               <th>Etiqueta</th>
               <th>Caracteristica</th>

@@ -18,7 +18,7 @@
 					</button>
 				</div>
 				<div class="input-field col s4 ">
-					<a id="modalCaracteristicas"class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-action-open-in-new"></i></a>
+					<a id="btn_modalCaracteristicas"class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-action-open-in-new"></i></a>
 				</div>
 			</form>
 		</div>
@@ -48,4 +48,5 @@
 		</div>
 	</div><!--fin del panel caracteristicas-->
 </div><!--div principal-->
+<?php $this->load->view('modales/caracteristicas');?>
 <script src="<?=base_url()?>js/caracteristicas.js"></script>

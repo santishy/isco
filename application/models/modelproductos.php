@@ -32,6 +32,11 @@ class ModelProductos extends CI_Model
 			and etiqueta_c="'.$data['etiqueta_c'].'" and caracteristica="'.$data['caracteristica'].'";');
 		return $query;
 	}
+	function getLastCaracteristicas()
+	{
+		$query=$this->db->query('select *from productos order by id_producto desc limit 5;');
+		return $query;
+	}
 	function addCaracteristica($data)
 	{
 		$query=$this->db->insert('caracteristicas',$data);
@@ -40,7 +45,7 @@ class ModelProductos extends CI_Model
 
 	function maxCaracteristica()
 	{
-		$query=$this->db->query('select *from caracteristicas order by desc id_caracteristica')	;
+		$query=$this->db->query('select id_caracteristica,etiqueta_c,caracteristica from caracteristicas where id_caracteristica=(select max(id_caracteristica) from caracteristicas);');
 		return $query;
 	}
 }

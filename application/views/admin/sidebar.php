@@ -1,0 +1,39 @@
+<div class="col s4">
+	<div class="card-panel light-withe light-2">
+		<div class="row">
+		    <div class="input-field col s12">
+			     <i class="mdi-action-search prefix"></i>
+			     <input id="icon_prefix" type="text" class="validate">
+			     <label for="icon_prefix">First Name</label>
+			</div>
+     	</div>
+	</div>
+	<div class="card-panel light-withe light-2">
+		<table class="bordered">
+			<thead>
+				<th>Opciones</th>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+			</thead>
+			<tbody>
+				<?php foreach ($caracteristicas->result() as $row) {?>
+				<tr>
+					<td><a class='dropdown-button btn' href='#' data-activates='dropdown2' style="padding:0 15px;margin:5px"><i class="mdi-action-view-headline"></i></a>
+							<!-- Dropdown Structure -->
+							<ul id='dropdown2' class='dropdown-content'>
+								<li><a href="#!">Caracteristica</a></li>
+							    <li><a href="#!">Especificacion</a></li>
+							    <li><a href="#!">Editar</a></li>
+							</ul></td>
+					<td>
+						<?=$row->nombreprod?>
+					</td>
+					<td>
+						<?=$row->descripcion?>
+					</td>
+				</tr>
+				<?php }?>
+			</tbody>
+		</table>
+	</div>
+</div>

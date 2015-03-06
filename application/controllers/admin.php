@@ -80,12 +80,14 @@ class Admin extends CI_Controller {
 	function frmProducto($data)
 	{
 		$data['query']=$this->ModelCategorias->getCategorias();
+		$data['caracteristicas']=$this->ModelProductos->getLastCaracteristicas();
 		$this->load->view('admin/header',$data);
 		$this->load->view('admin/addproducto');
 		$this->load->view('admin/caracteristicas');
+		$this->load->view('admin/sidebar');
 		$this->load->view('admin/footer');
 	}
-		public function validarProd($str)
+	public function validarProd($str)
 	{
 		$data=$this->input->post();
 		$query=$this->ModelProductos->validarProd($data);
@@ -122,6 +124,7 @@ class Admin extends CI_Controller {
 	# agregar Caracteristica-----
 	function addCaracteristica()
 	{
+
 		$data=$this->input->post();
 		$ban=$this->validarEmpty($data);
 		if($ban)
@@ -129,23 +132,23 @@ class Admin extends CI_Controller {
 			$query=$this->ModelProductos->getCaracteristica($data);
 			if($query->num_rows()==0)
 			{
-
+				$vec=array();
 				$query=$this->ModelProductos->addCaracteristica($data);
 				$query=$this->ModelProductos->maxCaracteristica();
 				foreach ($query->result() as $row) 
 				{
-					$data['ban']=1;
-					$data['etiqueta_c']=$row->etiqueta_c;
-					$data['caracteristica']=$row->caracteristica;
-					$data['id_caracteristica']=$row->id_caracteristica;
+					$vec['ban']=1;
+					$vec['etiqueta_c']=$row->etiqueta_c;
+					$vec['caracteristica']=$row->caracteristica;
+					$vec['id_caracteristica']=$row->id_caracteristica;
 				}
 			}
 			else 
-				$data['ban']=2;
+				$vec['ban']=2;
 		}
 		else
-			$data['ban']=0;
-		echo json_encode($data);
+			$vec['ban']=0;
+		echo json_encode($vec);
 	}
 	function validarEmpty($data)
 	{

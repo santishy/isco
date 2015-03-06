@@ -2,10 +2,10 @@ function despegable()
 {
 	$(".dropdown-button").dropdown();
 }
-function subirImagen(e)
+ function subirImagen(e)
 {
 	e.preventDefault();
-	var ruta=$(".rutaImagen").data('ruta');
+	var rutaimg=$(".rutaImagen").data('ruta');
 	$('#barraProgress').css('width','0%');
 	var files=e.target.files;
 	if(window.FormData)
@@ -19,7 +19,7 @@ function subirImagen(e)
 					var fd=new FormData();
 					fd.append('user_file',file);
 					ajax= new XMLHttpRequest();
-					ajax.open('POST',ruta,true);
+					ajax.open('POST',rutaimg,true);
 					ajax.addEventListener('load',function(e)
 					{
 						if(this.status==200){
@@ -52,28 +52,28 @@ function addCaracteristica()
 		url:rutaCaracteristicas,
 		beforeSend:function()
 		{
-
 		},
 		type:'post',
 		data:frmCaracteristicas.serialize(),
-		dataType:'text',
+		dataType:'json',
 		success:function(resp)
 		{
 			switch(resp.ban)
 			{
 				case 1:
 				case "1":
-					addTablaCaracteristica(resp);
+					$("#tableCaracteristicas").append('<tr><td>'+resp.etiqueta_c+'</td><td>'+resp.caracteristica+'</td><td><button class="btn waves-effect waves-light red accent-3 btnEliCaracteristica"><i class="mdi-navigation-cancel"></></button></td></tr>');
 					break;
 				case "0":
-				case 0;
+				case 0:
 					alert('Complete los campos');
 					break;
 				case 2:
 				case "2":
 					alert('Ya tiene agregada esa etiqueta y caracteristica');
-					break
+					break;
 				default:
+					alert('algo ocurrio'+resp.ban)
 					break;
 			}
 		},
@@ -83,11 +83,6 @@ function addCaracteristica()
 		},
 		complete:function()
 		{
-
 		}
 	});
-}
-function addCaracteristica(resp)
-{
-	$("#TablaCaracteristicas").append('<tr><td>'+resp.etiqueta_c+'</td><td>'+resp.caracteristica+'</td><td><button>X</eliminar></td></tr>')
 }

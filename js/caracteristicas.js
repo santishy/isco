@@ -2,8 +2,8 @@ $(document).on('ready',function()
 {
 	var rutaFunctions=$("#frmCaracteristicas").attr('action');
 	btn_addCaracteristica=$('#btn_addCaracteristica');
-	modalCaracteristicas=$("#modalCaracteristicas")
-	var btn_modalCaracteristicas=$("#modalCaracteristicas");
+	$("#modalCaracteristicas").leanModal();
+	var btn_modalCaracteristicas=$("#btn_modalCaracteristicas");
 	btn_addCaracteristica.on('click',function()
 	{
 		frmCaracteristicas=$("#frmCaracteristicas");
@@ -12,7 +12,8 @@ $(document).on('ready',function()
 				addCaracteristica();
 			});
 	});
-	btn_modalCaracteristicas.on('click',function(){
-		modalCaracteristicas.openModal();
+	btn_modalCaracteristicas.on('click',function()
+	{
+		$("#modalCaracteristicas").openModal();
 	})
 });

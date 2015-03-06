@@ -1,10 +1,9 @@
-
 	<div class="col s4">
 		<div class="card-panel light-withe light-2">
 			<div class="row">
 				<h4>Producto</h4>
 				<form id="frmProducto" method="post" action="<?=base_url()?>admin/addProducto">
-				<div class="input-field col s10 " id="containerSelect">
+				<div class="input-field col s10 " id="containerSelect" data-ruta="<?=base_url()?>js/functions.js">
 				  	<label>Categoria</label>
 					<select name="id_categoria" id="id_categoria">
 						<?php foreach ($query->result() as $row) 
@@ -34,15 +33,15 @@
 				      </div>
 				    </div>
 				</div>
-				<div class="input-field col s12 ">
+				<div class="input-field col s12">
 					<div  class="progress">
 					    <div class="determinate" id="barraProgress" ></div>
 					</div>
 				</div>
-				<div class="input-field col s3 ">
+				<div class="input-field col s3">
 					<label>Destacable</label>
 				</div>
-				<div class="input-field col s9 ">
+				<div class="input-field col s9">
 				 <div class="switch">
 				    <label>
 				      No
@@ -67,27 +66,25 @@
 			</form>
 		</div>
 	</div>
-
-
 <?php $this->load->view('modales/modalCategoria')?><!--Ventana modal de agregar categoria-->
-
-<script >
-	$(document).on('ready',function(){
-	var ruta=$(".rutaFunctions").data('ruta');
-
-	$("#modalCategorias").leanModal({opacity:.1});
-	addCategory=$("#addCategory");
-	addCategory.on('click',addCategoryAjax)
-	$("#categorias").on('click',function(){
-
-		$("#nombreCategoria").val("");
-		$("#nombreCategoria").attr('disabled',false);
-		$("#modalCategorias").openModal();
-
-   	});
-	$("#fileImagen").on('change',function(e){
-	$.getScript(ruta,function(){
-		subirImagen(e);});	
+<script>
+	$(document).on('ready',function()
+	{
+		var rutascript=$("#containerSelect").data('ruta');
+		$("#modalCategorias").leanModal({opacity:.1});
+		var addCategory=$("#addCategory");
+		addCategory.on('click',addCategoryAjax)
+		$("#categorias").on('click',function()
+		{
+			$("#nombreCategoria").val("");
+			$("#nombreCategoria").attr('disabled',false);
+			$("#modalCategorias").openModal();
+		});
+		$("#fileImagen").on('change',function(e){
+		$.getScript(rutascript,function()
+		{
+			subirImagen(e);
+		});	
 	});
 	function addCategoryAjax()
 	{
@@ -95,7 +92,8 @@
 		var pnombre=$("#nombreCategoria");
 		$.ajax({
 			url:ruta,
-			beforeSend:function(){
+			beforeSend:function()
+			{
 				//pnombre.attr('disabled','disabled');
 			},
 			type:'post',
@@ -143,5 +141,4 @@
 		});
 	}
 	});
-	
 </script>
