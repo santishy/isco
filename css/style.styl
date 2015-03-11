@@ -1,0 +1,518 @@
+@import 'nib/vendor'
+
+vendor-prefixes= o ms mos webkit official
+azul_oscuro = #0093DD
+azul = #6BC0EA
+naranja = #FD640A
+verde = #01AC0E
+
+@font-face {
+	font-family: 'iconos';
+	src:url('../font/icomoon.eot?guw6kg');
+	src:url('../font/icomoon.eot?#iefixguw6kg') format('embedded-opentype'),
+		url('../font/icomoon.woff?guw6kg') format('woff'),
+		url('../font/icomoon.ttf?guw6kg') format('truetype'),
+		url('../font/icomoon.svg?guw6kg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* mixins */
+
+boxProducts(color)
+	background-color white
+	border 2px solid rgba(color,0.7)
+	border-radius 3px
+	display inline-block
+	margin 2.1%
+	transition .2s all
+	width 20%
+	
+	&:hover
+		border 1px solid transparent
+		box-shadow 0px 3px 5px rgba(#000,0.5)
+		transform scale(1.1)
+	
+boxProductsResp()
+	display inline-block
+	margin 1.5%
+	width 45%
+	
+containerProducts()
+	background-color rgba(#cbcbcb,0.6)
+	border-radius 0px 20px 0px 0px
+	margin 0 auto
+	max-width 90%
+	padding 0
+	position relative
+	width 90%
+	
+iconServices(icono,color)	
+	p:first-child
+			
+		&:before
+			background-color white
+			border 3px solid color
+			border-radius 50%
+			color color
+			content icono
+			font-family "iconos"
+			font-size 50px
+			left 45%
+			overflow hidden
+			padding 15px
+			top 10
+			transition .5s all
+			
+		&:hover
+			&:before
+				background-color color
+				color white
+				
+	
+initProd(color)
+	background-color color
+	color #fff
+	font-weight bold
+	max-width 20%
+	position relative
+	text-align center
+	width 20%
+			
+	&:after
+		border-bottom 40px solid #6BC0EA
+		border-left 40px solid transparent
+		content ""
+		position absolute
+		right 0
+	
+titleProducts()
+	background-color #6BC0EA
+	border-radius 0px 20px 0px 0px
+	box-shadow 0px 2px 5px rgba(#000,0.5)
+	height 40px
+	line-height 40px
+	
+	
+/* */	
+
+
+
+body,html
+	font-family: 'Coda', cursive;
+	height 100%
+	margin 0
+	padding 0
+	max-width 100%
+	width 100%
+	
+a 
+	color #000
+	text-decoration none
+	
+	&:hover
+		text-decoration none
+	
+a.lnkNormal 
+	font-weight bold
+	
+	&:hover
+		text-decoration none
+
+	
+	
+.destacados		
+	.products
+		
+		.boxProduct
+			boxProducts(verde)
+		
+	.title
+		titleProducts()
+	p 
+		initProd(verde)		
+	
+footer
+	background-color #cbcbcb
+	border-top 1px solid #8585A6 
+	margin-top 70px
+	width 100%
+	
+	.footerAfter
+		background-color #000
+		color white
+		font-size 10px
+		height 40px
+		line-height 40px
+		text-align center
+		
+	.footerBefore
+		//border-top 1px solid #8585A6   antes del fondo
+		background-color #cbcbcb
+		color #000
+		height auto
+		margin 0 auto
+		padding 10px
+		text-align center
+		width 80%
+		
+		a
+			&:hover
+				text-decoration underline
+		
+		ul:first-child
+			list-style none
+			
+			li 
+				display inline-block
+				margin-right 1%
+				text-align center
+				vertical-align top
+				width 20%
+				
+				h3
+					//border-bottom 1px solid #000
+					font-size 14px
+					
+				ul 
+					display block	
+					
+					li 
+						display block
+						font-size 12px
+						width 80%
+		
+		
+
+	
+header
+	height auto
+	overflow hidden
+	padding 0
+	position relative
+	z-index 1
+	
+	
+	.follow	
+		background-color #E5E5ED
+		height 50px
+		line-height 20px
+		position relative
+		width 100%
+		
+		.contact
+			left 22%
+			margin 0 60px 0 70px
+			position absolute
+			top 10px
+			
+			&:before
+				color #0093DD
+				content "\e942"
+				display inline-block
+				font-family "iconos"
+				font-size 16px
+			
+		.search	
+			position absolute
+			right 6%
+			top 10px
+			
+			input[type="submit"]
+				background-color transparent
+				background-image url('../img/search.png')
+				background-repeat no-repeat
+				border none
+				height 32px
+				text-indent 0
+				vertical-align top
+				width 32px
+			
+		.social
+			position absolute
+			right 40%
+			top 10px	
+			
+			a 
+				img 
+					height 30px
+					width 30px
+			
+			
+		/*	&:after
+				color #3B5998
+				content "\ea8d"
+				display inline-block
+				font-family "iconos"
+				font-size 18px*/
+			
+		.txtSearch
+			border-radius 3px
+			border solid 1px #dcdcdc
+			padding 3px
+			transition box-shadow 0.3s, border 0.3s
+			
+			&:focus
+				border 1px solid #0093DD
+				
+		
+	.logoResp
+		display none
+		text-align center
+		
+		figure 
+			img 
+				width 250px	
+		
+.headerNav
+	background-color #6BC0EA
+	//font-family: 'Jura', sans-serif !important;
+	font-weight bold
+	height auto
+	position relative
+
+	.logo
+		background-color #E5E5ED
+		border-radius 0 60px 60px 0px
+		//border 1px solid green
+		left 80px
+		top -25px
+		position absolute
+		width 280px
+		z-index 2	
+		
+		img 
+			width 90%
+	
+		
+	nav 		
+		background-color #0093DD
+		border-left 180px solid white
+		margin-left 100px
+		padding-left 100px
+		text-align center
+		
+		.menu 
+			height 50px
+			line-height 40px
+			margin 0
+			padding 0
+			
+			li 
+				display inline-block
+				border-top 7px solid #0093DD
+				transition 0.2s all linear
+				
+				a 
+					color white
+					display inline-block
+					height 100%
+					margin 0 0.5em
+					padding 0 0.2em
+					text-decoration none
+					transition 0.2s all linear
+					
+				&:hover
+					
+					border-top 7px solid #000
+					
+nav.navResp
+	select
+		display none
+		max-width 100%	
+		width 100%			
+		
+.novedades ,.ofertas, .destacados
+	containerProducts()
+	
+	.products
+		
+		.boxProduct
+			.imagen
+				cursor pointer
+				margin 0 auto
+				padding 5px
+				width 80%
+				
+				figcaption
+					font-size 12px
+					text-align justify
+				
+				img
+					transition .2s all
+					width 100%
+			
+		
+.novedades	
+	.products
+		
+		.boxProduct
+			boxProducts(#FD640A)
+			
+	.title
+		titleProducts()
+	p 
+		initProd(#FD640A)		
+
+.lnkUp
+	background-color azul_oscuro
+	border 2px solid verde
+	border-radius 42px
+	bottom 10%
+	color white
+	//display none
+	height 42px
+	opacity 0.8
+	position fixed
+	right -50px
+	text-align center
+	text-decoration none
+	transition .2s all
+	width 42px
+	
+	&:hover
+		opacity 1
+
+	span 
+		font-weight bold
+		line-height 2.5
+		//vertical-align bottom
+		
+.uno
+	transform translateX(-52px)
+.dos 
+	transform translateX(50px)	
+		
+.ofertas
+	.products
+		
+		.boxProduct
+			boxProducts(azul)
+			
+	.title
+		titleProducts()
+	p 
+		initProd(azul_oscuro)	
+		
+
+.services
+	border-top 1px solid #8585A6
+	margin 0 auto
+	margin-top 20px
+	width 90%
+	
+	
+	div 
+		display inline-block
+		margin 2.1%
+		position relative
+		text-align center
+		width 20%		
+		
+	div:nth-child(2)	
+		
+		iconServices("\e956",azul)
+				
+	div:nth-child(3)
+		iconServices("\e914",azul_oscuro)	
+	
+	div:nth-child(4)
+		iconServices("\e922",verde)	
+		
+	div:nth-child(5)
+		iconServices("\e91b",naranja)					
+			
+	h3
+		text-align center	
+		
+			
+
+.sliderContainer
+	margin 0 auto
+	max-width 95%
+	width 95%
+	
+	ul 
+		li 
+			
+			img 
+				
+				height 300px
+				width 100%
+	
+
+@media screen and (max-width:960px)
+
+	footer
+		.footerBefore
+			ul:first-child
+		
+				li 
+					
+					width 45%
+
+	header	
+		.follow
+			height 100px
+			margin-bottom 10px
+			
+			.contact
+				display block
+				left 0
+				position relative
+				text-align center
+				top 0
+				
+			.search	
+				display block
+				left 0
+				position relative
+				text-align center
+				top 0
+				
+			
+			.social
+				display block
+				left 0
+				position relative
+				text-align center
+				top 0
+				
+		.logoResp
+			display block
+			
+
+	.headerNav
+		display none
+		.logo
+			display none
+		nav 
+			ul 
+				display none
+				
+			
+	nav.navResp
+		select 
+			display inline-block
+			
+
+	.ofertas, .novedades , .destacados
+		.products
+		
+			.boxProduct
+				boxProductsResp()
+				
+		.title
+		
+		
+			p 
+				max-width 50%
+				width 50%
+				
+	
+			
+	.services
+		
+		div 
+			width 45%		
+		
