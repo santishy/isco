@@ -2,8 +2,22 @@
 
 class Home extends CI_Controller {
 
+	function __construct(){
+		parent::__construct();
+		$this->load->model('ModelCategorias');
+
+	}
+
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->home();
+	}
+
+	function home(){
+		$data['query']=$this->ModelCategorias->getCategorias();
+		$this->load->view('includes/header');
+		$this->load->view('site/inicio',$data);
+		$this->load->view('includes/footer');
+
 	}
 }
