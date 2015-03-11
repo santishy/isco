@@ -51,7 +51,8 @@ class ModelProductos extends CI_Model
 	}
 	function eliminarCaracteristica($data)
 	{
-		$query=$this->db->delete('caracteristicas',$data);
+		$this->db->where('id_caracteristica',$data['id_caracteristica']);
+		$query=$this->db->delete('caracteristicas');
 		return $query;
 	}
 	/*--------------------------------especifiaciones----------------------------------------*/
@@ -74,7 +75,8 @@ class ModelProductos extends CI_Model
 	}
 	function eliminarEspecificacion($data)
 	{
-		$query=$this->db->delete($data);
+		$this->db->where('id_especificacion',$data['id_especificacion']);
+		$query=$this->db->delete('especificaciones');
 		return $query;
 	}
 }

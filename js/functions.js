@@ -66,7 +66,7 @@ function addCaracteristica()
 					$("#caracteristica").val("");
 					$("#etiqueta_c").val("");
 					$.each($('.btnEliCaracteristica'),function(){
-						$(this).on('click',eliminarCaracteristica);
+						$(this).on('click',function(){eliminarCaracteristica($(this))});
 					});
 					break;
 				case "0":
@@ -112,6 +112,9 @@ function addEspecificacion()
 					$("#tableEspecificaciones").append('<tr><td>'+resp.etiqueta_e+'</td><td>'+resp.especificacion+'</td><td><button class="btn waves-effect waves-light red accent-3 btnEliEspecificacion" data-id="'+resp.id_especificacion+'"><i class="mdi-navigation-cancel"></></button></td></tr>');
 					$("#especificacion").val("");
 					$("#etiqueta_e").val("");
+					$.each($('.btnEliEspecificacion'),function(){
+						$(this).on('click',function(){eliminarEspecificacion($(this))});
+					});
 					break;
 				case "0":
 				case 0:
@@ -135,7 +138,7 @@ function addEspecificacion()
 		}
 	});
 }
-function eliminarCaracteristica()
+function eliminarCaracteristica(ele)
 {
 	var idcaracteristica=$(this).data('id');
 	var rutafeatures=$("#rutaCaracteristicas").data('rutafeatures');
@@ -150,7 +153,36 @@ function eliminarCaracteristica()
 		success:function(resp)
 		{
 			if(resp==1 || resp=="1")
-				alert($(this).parent().html());
+				ele.parent().parent().remove();
+			else 
+				alert(resp)
+		},
+		error:function(xhr,error,estado)
+		{
+			alert(xhr+" "+error+" "+estado+" ");
+		},
+		complete:function()
+		{
+
+		}
+	});
+}
+function eliminarEspecificacion(ele)
+{
+	var idespecificacion=$(this).data('id');
+	var rutaEspecification=$("#modalEspecificaciones").data('ruta');
+	$.ajax({
+		url:rutaEspecification,
+		beforeSend:function()
+		{
+		},
+		type:'post',
+		data:{id_especificacion:idespecificacion},
+		dataType:'text',
+		success:function(resp)
+		{
+			if(resp==1 || resp=="1")
+				ele.parent().parent().remove();
 			else 
 				alert(resp)
 		},
