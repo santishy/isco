@@ -66,7 +66,7 @@
 			</form>
 		</div>
 	</div>
-<?php $this->load->view('modales/modalCategoria')?><!--Ventana modal de agregar categoria-->
+<?php $this->load->view('modales/modalcategoria')?><!--Ventana modal de agregar categoria-->
 <script>
 	$(document).on('ready',function()
 	{
