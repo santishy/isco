@@ -11,6 +11,12 @@ class ModelCategorias extends CI_Model
 		$query=$this->db->get('categorias');
 		return $query;
 	}
+	function getCategoriasLimit(){
+		$this->db->select('*');
+		$this->db->limit(6);
+		$query=$this->db->get('categorias');
+		return $query;
+	}
 	function getCategory($nombre)
 	{
 		$this->db->where('nombre',$nombre);

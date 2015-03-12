@@ -21,7 +21,7 @@ verde = #01AC0E
 
 boxProducts(color)
 	background-color white
-	border 2px solid rgba(color,0.7)
+	border 1px solid rgba(white,0.7)
 	border-radius 3px
 	display inline-block
 	margin 2.1%
@@ -38,14 +38,17 @@ boxProductsResp()
 	margin 1.5%
 	width 45%
 	
-containerProducts()
-	background-color rgba(#cbcbcb,0.6)
-	border-radius 0px 20px 0px 0px
+containerProducts(color)
+	background-color rgba(color,0.8)
+	border-radius 0px 5px 5px 5px
 	margin 0 auto
 	max-width 90%
 	padding 0
 	position relative
 	width 90%
+	
+.dos 
+	transform translateX(50px)		
 	
 iconServices(icono,color)	
 	p:first-child
@@ -88,16 +91,15 @@ initProd(color)
 	
 titleProducts()
 	background-color #6BC0EA
-	border-radius 0px 20px 0px 0px
-	box-shadow 0px 2px 5px rgba(#000,0.5)
+	border-radius 0px 5px 0px 0px
+	box-shadow 0px 2px 5px rgba(#000,0.6)
 	height 40px
 	line-height 40px
 	
 	
 /* */	
-
-
-
+	
+			
 body,html
 	font-family: 'Coda', cursive;
 	height 100%
@@ -119,9 +121,11 @@ a.lnkNormal
 	&:hover
 		text-decoration none
 
-	
+.clear
+	clear both	
 	
 .destacados		
+	containerProducts(verde)
 	.products
 		
 		.boxProduct
@@ -316,44 +320,34 @@ header
 					
 					border-top 7px solid #000
 					
-nav.navResp
-	select
-		display none
-		max-width 100%	
-		width 100%			
-		
-.novedades ,.ofertas, .destacados
-	containerProducts()
+.lateral
+	width 19%
+	float left
+	text-align center
 	
-	.products
+	h3 
+		background-color azul_oscuro
+		border-radius 3px
+		box-shadow 0px 2px 5px rgba(#000,0.5)
+		color white
 		
-		.boxProduct
-			.imagen
-				cursor pointer
-				margin 0 auto
-				padding 5px
-				width 80%
-				
-				figcaption
-					font-size 12px
-					text-align justify
-				
-				img
-					transition .2s all
-					width 100%
+	section.recomendados
+		width 100%
+		
+		article:nth-child(odd)
+			border 2px solid rgba(azul)
 			
-		
-.novedades	
-	.products
-		
-		.boxProduct
-			boxProducts(#FD640A)
+		article:nth-child(even)
+			border 2px solid azul_oscuro	
 			
-	.title
-		titleProducts()
-	p 
-		initProd(#FD640A)		
-
+		article
+			border-radius 3px
+			margin-bottom 10px
+			
+			figure 
+				img 
+					width 80%					
+					
 .lnkUp
 	background-color azul_oscuro
 	border 2px solid verde
@@ -377,13 +371,46 @@ nav.navResp
 		font-weight bold
 		line-height 2.5
 		//vertical-align bottom
+			
+nav.navResp
+	select
+		display none
+		max-width 100%	
+		width 100%			
 		
-.uno
-	transform translateX(-52px)
-.dos 
-	transform translateX(50px)	
+.novedades ,.ofertas, .destacados
+	.products
+		
+		.boxProduct
+			.imagen
+				cursor pointer
+				margin 0 auto
+				padding 5px
+				width 80%
+				
+				figcaption
+					font-size 12px
+					text-align justify
+				
+				img
+					transition .2s all
+					width 100%
+			
+		
+.novedades	
+	containerProducts(naranja)
+	.products
+		
+		.boxProduct
+			boxProducts(#FD640A)
+			
+	.title
+		titleProducts()
+	p 
+		initProd(#FD640A)		
 		
 .ofertas
+	containerProducts(azul_oscuro)
 	.products
 		
 		.boxProduct
@@ -394,6 +421,9 @@ nav.navResp
 	p 
 		initProd(azul_oscuro)	
 		
+.productsPrincipal
+	width 78%
+	float left		
 
 .services
 	border-top 1px solid #8585A6
@@ -439,7 +469,8 @@ nav.navResp
 				
 				height 300px
 				width 100%
-	
+.uno
+	transform translateX(-52px)	
 
 @media screen and (max-width:960px)
 
@@ -490,6 +521,11 @@ nav.navResp
 			ul 
 				display none
 				
+	.lateral
+		float none
+		margin 0 auto
+		width 50%			
+				
 			
 	nav.navResp
 		select 
@@ -509,7 +545,9 @@ nav.navResp
 				max-width 50%
 				width 50%
 				
-	
+	.productsPrincipal
+		float none
+		width 100%
 			
 	.services
 		

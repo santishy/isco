@@ -10,102 +10,135 @@
 	</div>
 	<!-- end SliderContainer-->
 	<!-- start ofertas -->
-	<section class="ofertas">
-		<div class="title">
-			<p>Ofertas</p>
-		</div>
-		<div class="products">
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
+	<div class="productsPrincipal">
+		<section class="ofertas">
+			<div class="title">
+				<p>Ofertas</p>
 			</div>
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
+			<div class="products">
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
 			</div>
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
+		</section> <!-- end ofertas -->
+		<!-- start destacados -->
+		<section class="destacados">
+			<div class="title">
+				<p>Destacados</p>
 			</div>
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
+			<div class="products">
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
 			</div>
-		</div>
-	</section> <!-- end ofertas -->
-	<!-- start destacados -->
-	<section class="destacados">
-		<div class="title">
-			<p>Destacados</p>
-		</div>
-		<div class="products">
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
+		</section> <!-- end destacados -->
+		<!-- start nuevos -->
+		<section class="novedades">
+			<div class="title">
+				<p>Novedades</p>
 			</div>
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
+			<div class="products">
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
+				<div class="boxProduct">
+					<figure class="imagen">
+						<img src="<?=base_url()?>img/lap.jpg" alt="" />
+						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
+					</figure>
+				</div>
 			</div>
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
-			</div>
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
-			</div>
-		</div>
-	</section> <!-- end destacados -->
-	<!-- start nuevos -->
-	<section class="novedades">
-		<div class="title">
-			<p>Novedades</p>
-		</div>
-		<div class="products">
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
-			</div>
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
-			</div>
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
-			</div>
-			<div class="boxProduct">
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-				</figure>
-			</div>
-		</div>
 
-	</section> <!-- end nuevos -->
+		</section> <!-- end nuevos -->
+	</div>
+	<aside class="lateral">
+		<h3>Recomendados</h3>
+		<section class="recomendados">
+			<article>
+				<figure class="imagen">
+					<img src="<?=base_url()?>img/lap.jpg" alt="" />
+					<figcaption>Laptop </figcaption>
+				</figure>
+			</article>
+			<article>
+				<figure class="imagen">
+					<img src="<?=base_url()?>img/lap.jpg" alt="" />
+					<figcaption>Laptop </figcaption>
+				</figure>
+			</article>
+			<article>
+				<figure class="imagen">
+					<img src="<?=base_url()?>img/lap.jpg" alt="" />
+					<figcaption>Laptop </figcaption>
+				</figure>
+			</article>
+			<article>
+				<figure class="imagen">
+					<img src="<?=base_url()?>img/lap.jpg" alt="" />
+					<figcaption>Laptop </figcaption>
+				</figure>
+			</article>
+		</section>
+
+	</aside>
+	<div class="clear"></div>
 	<!-- start section services -->
 	<section class="services">
 		<h3>Servicios</h3>

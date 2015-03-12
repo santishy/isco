@@ -14,7 +14,7 @@ class Home extends CI_Controller {
 	}
 
 	function home(){
-		$data['query']=$this->ModelCategorias->getCategorias();
+		$data['query']=$this->ModelCategorias->getCategoriasLimit();
 		$this->load->view('includes/header');
 		$this->load->view('site/inicio',$data);
 		$this->load->view('includes/footer');
