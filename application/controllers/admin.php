@@ -21,7 +21,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('precio','Precio','required|trim|callback_validarProd');
 		$this->form_validation->set_rules('descripcion','Descripcion','required|trim');
 		$this->form_validation->set_rules('nombreprod','Nombre','required|trim');
-		$this->form_validation->set_rules('rutaImagen','Imagen','required|trim');
+		//$this->form_validation->set_rules('rutaImagen','Imagen','required|trim');
 		//$this->form_validation->set_rules('destacado','Destacado','required');
 		if($this->form_validation->run()===false)
 		{
@@ -31,12 +31,28 @@ class Admin extends CI_Controller {
 		}
 		else 
 		{
+			if(strlen($this->input->post('id_producto')))
+				$id=$this->input->post('id_producto');
 			$data['nombreprod']=$this->input->post('nombreprod');
 			$data['precio']=$this->input->post('precio');
 			$data['id_categoria']=$this->input->post('id_categoria');
 			$data['descripcion']=$this->input->post('descripcion');
 			$data['destacado']=$this->input->post('destacado');
+			$data['oferta']=$this->input->post('oferta');
 			$img['ruta']=$this->input->post('rutaImagen');
+			if(isset($id))
+			{
+				$this->change($data,$img,$id);
+			}
+			else
+			{
+				$this->add($data,$img);
+			}
+			
+		}	
+	}
+	function add($data,$img)
+	{
 			$query=$this->ModelProductos->addProducto($data);
 			$maxId=$this->ModelProductos->maxId();
 			foreach ($maxId->result() as $row) 
@@ -53,8 +69,28 @@ class Admin extends CI_Controller {
 			}
 			$data['id_producto']=$img['id_producto'];
 			$this->frmProducto($data);
+	}
+	function change($data,$img,$id)
+	{
+		$query=$this->ModelProductos->validarProd($data);
+		if($query->num_rows() == 0)
+		{
+			$this->ModelProductos->change($data,$id);
+			$img['id_producto']=$id;
+
+			if(strlen($img['ruta'])>0)
+			{
+			 	$query=$this->ModelProductos->addImgProd($img);
+			}
+			$vec['mensaje']="Modificado";
+			$vec['id_producto']=$id;
+			$this->frmProducto($vec);
 		}
-		
+		else
+		{
+			$vec['mensaje']="Ya existe ese producto";
+			$this->frmProducto($vec);
+		}
 	}
 	function addImg()
 	{
@@ -86,6 +122,12 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/caracteristicas');
 		$this->load->view('admin/sidebar');
 		$this->load->view('admin/footer');
+	}
+	public function getProducto()
+	{
+		$id=$this->input->post('id_producto');
+		$query=$this->ModelProductos->getProducto($id);
+		echo json_encode($query->result());
 	}
 	public function validarProd($str)
 	{

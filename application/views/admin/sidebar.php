@@ -8,7 +8,7 @@
 			</div>
      	</div>
 	</div>
-	<div class="card-panel light-withe light-2">
+	<div id="productos" class="card-panel light-withe light-2" data-ruta="<?=base_url()?>admin/getProducto">
 		<table class="bordered">
 			<thead>
 				<th>Opciones</th>

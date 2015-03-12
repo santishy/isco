@@ -196,3 +196,50 @@ function eliminarEspecificacion(ele)
 		}
 	});
 }
+function getProducto(id)
+{
+	var ruta=$("#productos").data('ruta');
+	$.ajax({
+		url:ruta,
+		beforeSend:function(){
+
+		},
+		type:'post',
+		data:{id_producto:id},
+		dataType:'json',
+		success:function(resp)
+		{
+			$("#id_categoria").removeClass('initialized');
+			if(!jQuery.isEmptyObject(resp))
+			{
+				$.each(resp[0],function(index,value)
+				{
+
+					
+					if(index!="destacado" && index!="oferta" && index!="id_categoria")
+					{
+						$('#'+index).focus();
+						$('#'+index).val(value);
+					}
+					else 
+						if(value==1 || value=="1")
+							$('#'+index).attr('checked',true);
+						else 
+							$('#'+index).attr('checked',false);
+						if(index=="id_categoria")
+							$('#id_categoria option[value="15"]').attr('selected',true);
+					});
+
+			}
+			else
+				alert('Recargue la pagina');
+		},
+		error:function(xhr,estado,error){
+
+		},
+		complete:function()
+		{
+
+		}
+	});
+}

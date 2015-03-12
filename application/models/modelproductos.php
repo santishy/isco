@@ -30,6 +30,17 @@ class ModelProductos extends CI_Model
 		$query=$this->db->query('select *from productos order by id_producto desc limit 5;');
 		return $query;
 	}
+	function getProducto($id)
+	{
+		$this->db->where('id_producto',$id);
+		$query=$this->db->get('productos');
+		return $query;
+	}
+	function change($data,$id)
+	{
+		$this->db->where('id_producto',$id);
+		$this->db->update('productos',$data);
+	}
 	/*--------------------------------caracteristicas----------------------------------------*/
 	function getCaracteristica($data)
 	{

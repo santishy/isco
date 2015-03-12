@@ -30,6 +30,7 @@
 				        <span>Imagen</span>
 				        <input type="file" id="fileImagen" name="fileImagen"/>
 				       	<input type="hidden" name="rutaImagen" id="rutaImagen">
+				       	<input type="hidden" name="id_producto" id="id_producto">
 				      </div>
 				    </div>
 				</div>
@@ -45,7 +46,20 @@
 				 <div class="switch">
 				    <label>
 				      No
-				      <input type="checkbox" id="destacado" name="destacado" value="true">
+				      <input type="checkbox" id="destacado" name="destacado" value="1">
+				      <span class="lever"></span>
+				      Si
+				    </label>
+				  </div>
+				</div>
+				<div class="input-field col s3">
+					<label>Oferta</label>
+				</div>
+				<div class="input-field col s9">
+				 <div class="switch">
+				    <label>
+				      No
+				      <input type="checkbox" id="oferta" name="oferta" value="1">
 				      <span class="lever"></span>
 				      Si
 				    </label>
@@ -140,5 +154,15 @@
 			}
 		});
 	}
+	//parte del sidebar
+	$('.edit').on('click',function(){
+		id=$(this).data('id');
+		$("#frmProducto").get(0).reset();
+		$.getScript(rutascript,function()
+		{
+			getProducto(id);
+		});
+
+	})
 	});
 </script>
