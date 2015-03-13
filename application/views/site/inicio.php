@@ -1,7 +1,12 @@
 	<!-- start sliderContainer -->
 	<div class="sliderContainer">
 		<ul class="bxslider">
-			<li><a href="#"><img src="<?=base_url()?>img/1.jpg" alt=""></a></li>
+			<?php if($sliders->num_rows() > 0) foreach ($sliders->result() as $slide) {?>
+				<?php $url = strtolower($slide->titulo); $url = str_replace(" ", "-", $url); ?>
+				<li><a href="<?=base_url()?>anuncios/<?=$url?>/<?=$slide->id_slider?>"><img src="<?=base_url()?>imgslider/<?=$slide->imagen?>" alt="" /></a></li>
+			<?php } else {?>
+			<li><a href="#"><img src="<?=base_url()?>img/2.jpg" alt=""></a></li>
+			<?php } ?>
 			<li><a href="#"><img src="<?=base_url()?>img/2.jpg" alt=""></a></li>
 			<li><a href="#"><img src="<?=base_url()?>img/3.jpg" alt=""></a></li>
 			<li><a href="#"><img src="<?=base_url()?>img/4.jpg" alt=""></a></li>

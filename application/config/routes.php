@@ -38,8 +38,9 @@
 |
 */
 
-$route['default_controller'] = "home/index";
+$route['default_controller'] = "inicio/index";
 $route['404_override'] = '';
+$route['anuncios/(:any)'] = "anuncios/aviso/";
 
 
 /* End of file routes.php */

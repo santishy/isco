@@ -28,7 +28,7 @@
 	<header>
 		<div class="logoResp">
 			<figure>
-				<img src="<?=base_url()?>img/logo_isco1.png" alt="">
+				<a href="<?=base_url()?>"><img src="<?=base_url()?>img/logo_isco1.png" alt="" /></a>
 			</figure>
 		</div>
 		<div class="follow">
@@ -51,12 +51,12 @@
 	<div class="headerNav">
 		<div class="logo">
 			<figure>
-				<img src="<?=base_url()?>img/logo_isco1.png" alt="">
+				<a href="<?=base_url()?>"><img src="<?=base_url()?>img/logo_isco1.png" alt="" /></a>
 			</figure>
 		</div>
 		<nav>
 			<ul class="menu">
-				<li><a href="">INICIO</a></li>
+				<li><a href="<?=base_url()?>">INICIO</a></li>
 				<li><a href="">QUIENES SOMOS</a></li>
 				<li><a href="">SERVICIOS</a></li>
 				<li><a href="">PRODUCTOS</a></li>
