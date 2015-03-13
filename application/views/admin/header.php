@@ -10,7 +10,7 @@
 </head>
 <body>
 	<ul id="dropdown1" class="dropdown-content ">
-		  <li><a href="#!">one</a></li>
+		  <li><a href="#!">Servicios</a></li>
 		  <li><a href="#!">two</a></li>
 		  <li class="divider"></li>
 		  <li><a href="#!">three</a></li>
@@ -20,7 +20,7 @@
 		    <div class="col s12">
 		      <a href="#!" class="brand-logo">Logo</a>
 		      <ul class="right hide-on-med-and-down">
-		        <li><a href="sass.html">Sass</a></li>
+		        <li><a href="<?=base_url()?>servicios/addServicio">Servicios</a></li>
 		        <li><a href="components.html">Components</a></li>
 		        <!-- Dropdown Trigger -->
 		        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
@@ -28,6 +28,6 @@
 		    </div>
 		  </div>
 		</nav>
-	<div class="row">
+	<div id="rutascript" class="row" data-ruta="<?=base_url()?>js/functions.js">
 		<!-- Dropdown Structure -->
 		

@@ -1,0 +1,11 @@
+$(document).on('ready',function()
+{
+	imagen=$("#fileImagen");
+	rutascript=$('#rutascript').data('ruta');
+	imagen.on('change',function(e)
+	{
+		$.getScript(rutascript,function(){
+			subirImagen(e);
+		});
+	});
+});

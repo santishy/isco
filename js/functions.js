@@ -209,13 +209,13 @@ function getProducto(id)
 		dataType:'json',
 		success:function(resp)
 		{
-			$("#id_categoria").removeClass('initialized');
+			
+
 			if(!jQuery.isEmptyObject(resp))
 			{
+				$("#id_categoria").removeClass('initialized');
 				$.each(resp[0],function(index,value)
 				{
-
-					
 					if(index!="destacado" && index!="oferta" && index!="id_categoria")
 					{
 						$('#'+index).focus();
@@ -227,12 +227,15 @@ function getProducto(id)
 						else 
 							$('#'+index).attr('checked',false);
 						if(index=="id_categoria")
-							$('#id_categoria option[value="15"]').attr('selected',true);
+							$('#id_categoria option[value="14"]').attr('selected',true);
 					});
-
 			}
 			else
 				alert('Recargue la pagina');
+			$("#id_categoria").material_select();
+			$("#id_categoria").remove();
+			//$("#id_categoria").removeClass('initialized');
+			//$('select').material_select();
 		},
 		error:function(xhr,estado,error){
 

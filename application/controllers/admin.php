@@ -12,7 +12,7 @@ class Admin extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('admin/configuraciones');
+		$this->addProducto();
 	}
 
 	public function addProducto()
@@ -232,6 +232,7 @@ class Admin extends CI_Controller {
 		echo json_encode($vec);
 	}
 	#ELIMINAR ESPECIFICACION
+
 	function eliminarEspecificacion()
 	{
 		$data=$this->input->post();
