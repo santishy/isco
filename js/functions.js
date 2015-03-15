@@ -227,15 +227,15 @@ function getProducto(id)
 						else 
 							$('#'+index).attr('checked',false);
 						if(index=="id_categoria")
-							$('#id_categoria option[value="14"]').attr('selected',true);
+						{
+							$('#'+index+' option[value="'+value+'"]').attr('selected',true);
+							clonCategory();
+						}
+							
 					});
 			}
 			else
 				alert('Recargue la pagina');
-			$("#id_categoria").material_select();
-			$("#id_categoria").remove();
-			//$("#id_categoria").removeClass('initialized');
-			//$('select').material_select();
 		},
 		error:function(xhr,estado,error){
 
@@ -245,4 +245,24 @@ function getProducto(id)
 
 		}
 	});
+}
+function clonCategory()
+{
+	clon = document.getElementById('id_categoria').cloneNode(true);
+	$("#containerSelect").remove();
+	label=document.createElement('label');
+	label.text="Categoria";
+	clon.id="id_categoria";
+	clon.name="id_categoria";
+	$('select').material_select();
+	div=document.createElement('div');
+	div.classList.add('input-field','col','s10');
+	div.id="containerSelect";
+	clon.classList.remove('initialized');
+	div.appendChild(label.cloneNode(true));
+	div.appendChild(clon);
+	clon.classList.remove('initialized');
+	$("#frmProducto").prepend(div);
+	$("#id_categoria").material_select();
+	$('select').material_select();
 }

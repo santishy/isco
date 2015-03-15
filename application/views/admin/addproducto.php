@@ -120,23 +120,10 @@
 					{
 						$("#id_categoria").removeClass('initialized');
 						$('#id_categoria').append($('<option value="'+resp.id_categoria+'">'+resp.nombre+'</option>'));
-						clon = document.getElementById('id_categoria').cloneNode(true);
-						$("#containerSelect").remove();
-						label=document.createElement('label');
-						label.text="Categoria";
-						clon.id="id_categoria";
-						clon.name="id_categoria";
-						$('select').material_select();
-						div=document.createElement('div');
-						div.classList.add('input-field','col','s10');
-						div.id="containerSelect";
-						clon.classList.remove('initialized');
-						div.appendChild(label.cloneNode(true));
-						div.appendChild(clon);
-						clon.classList.remove('initialized');
-						$("#frmProducto").prepend(div);
-						$("#id_categoria").material_select();
-						$('select').material_select();
+						$.getScript(rutascript,function()
+							{
+								clonCategory();
+							})
 						$("#modalCategorias").closeModal();	
 					}
 					else 
