@@ -3,7 +3,7 @@
 		<ul class="bxslider">
 			<?php if($sliders->num_rows() > 0) foreach ($sliders->result() as $slide) {?>
 				<?php $url = strtolower($slide->titulo); $url = str_replace(" ", "-", $url); ?>
-				<li><a href="<?=base_url()?>anuncios/<?=$url?>/<?=$slide->id_slider?>"><img src="<?=base_url()?>imgslider/<?=$slide->imagen?>" alt="" /></a></li>
+				<li><a href="<?=base_url()?>anuncios/<?=$url?>/<?=$slide->id?>"><img src="<?=base_url()?>imgslider/<?=$slide->imagen?>" alt="" /></a></li>
 			<?php } else {?>
 			<li><a href="#"><img src="<?=base_url()?>img/2.jpg" alt=""></a></li>
 			<?php } ?>
@@ -21,30 +21,17 @@
 				<p>Ofertas</p>
 			</div>
 			<div class="products">
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
+				<?php foreach ($ofertas->result() as $offer) { ?>
+					<div class="boxProduct">
+						<figure class="imagen">
+							<img src="<?=base_url()?>uploads/<?=$offer->imagen?>" alt="">
+							<figcaption><?=$offer->nombreProd?></figcaption>
+						</figure>
+						<!--<div><?=$offer->des?></div>-->
+					</div>
+				<?php } ?>	
+				
+				
 			</div>
 		</section> <!-- end ofertas -->
 		<!-- start destacados -->
@@ -53,30 +40,15 @@
 				<p>Destacados</p>
 			</div>
 			<div class="products">
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
+				<?php foreach ($destacados->result() as $dest) { ?>
+					<div class="boxProduct">
+						<figure class="imagen">
+							<img src="<?=base_url()?>uploads/<?=$dest->imagen?>" alt="">
+							<figcaption><?=$dest->nombreProd?></figcaption>
+						</figure>
+						<!--<div><?=$offer->des?></div>-->
+					</div>
+				<?php } ?>	
 			</div>
 		</section> <!-- end destacados -->
 		<!-- start nuevos -->
@@ -85,30 +57,22 @@
 				<p>Novedades</p>
 			</div>
 			<div class="products">
+				<?php foreach ($novedades->result() as $new) { ?>
+					<div class="boxProduct">
+						<figure class="imagen">
+							<img src="<?=base_url()?>uploads/<?=$new->imagen?>" alt="">
+							<figcaption><?=$new->nombreProd?></figcaption>
+						</figure>
+						<!--<div><?=$offer->des?></div>-->
+					</div>
+				<?php } ?>	
 				<div class="boxProduct">
 					<figure class="imagen">
 						<img src="<?=base_url()?>img/lap.jpg" alt="" />
 						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
 					</figure>
 				</div>
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
+				
 			</div>
 
 		</section> <!-- end nuevos -->
@@ -134,12 +98,7 @@
 					<figcaption>Laptop </figcaption>
 				</figure>
 			</article>
-			<article>
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Laptop </figcaption>
-				</figure>
-			</article>
+			
 		</section>
 
 	</aside>

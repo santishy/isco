@@ -57,10 +57,16 @@
 		<nav>
 			<ul class="menu">
 				<li><a href="<?=base_url()?>">INICIO</a></li>
-				<li><a href="">QUIENES SOMOS</a></li>
-				<li><a href="">SERVICIOS</a></li>
-				<li><a href="">PRODUCTOS</a></li>
-				<li><a href="">CONTACTO</a></li>
+				<li><a href="#">QUIENES SOMOS</a></li>
+				<li><a href="#">SERVICIOS</a></li>
+				<li><a href="">PRODUCTOS</a>
+					<ul>
+						<?php foreach ($query->result() as $cat) { ?>
+						<li><a href=""><?= $cat->nombre ?></a></li>
+						<?php } ?>
+					</ul>
+				</li>
+				<li><a href="#">CONTACTO</a></li>
 			</ul>
 		</nav>
 	</div>

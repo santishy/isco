@@ -30,6 +30,6 @@ class Anuncios extends CI_Controller {
 
 	function getHeader(){
 		$data['query']=$this->ModelCategorias->getCategoriasLimit();
-		$this->load->view('includes/header');
+		$this->load->view('includes/header',$data);
 	}
 }

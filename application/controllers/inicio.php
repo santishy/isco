@@ -31,6 +31,9 @@ class Inicio extends CI_Controller {
 	function home(){
 		$data['sliders'] = $this->ModelHome->getSlider();
 		$this->getHeader();
+		$data['ofertas'] = $this->ModelHome->getOffer();
+		$data['destacados'] = $this->ModelHome->getDestacados();
+		$data['novedades'] = $this->ModelHome->getNuevos();
 		$this->load->view('site/inicio',$data);
 		$this->getFooter();
 
@@ -38,6 +41,6 @@ class Inicio extends CI_Controller {
 
 	function getHeader(){
 		$data['query']=$this->ModelCategorias->getCategoriasLimit();
-		$this->load->view('includes/header');
+		$this->load->view('includes/header',$data);
 	}
 }

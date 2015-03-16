@@ -14,10 +14,37 @@ class ModelHome extends CI_Model
 	}
 
 	function getSlide($id){
-		$this->db->where("id_slider",$id);
+		$this->db->where("id",$id);
 		$this->db->where("slider",true);
 		$query = $this->db->get('servicios');
 		return $query;
+	}
+
+	function getOffer(){
+		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
+			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
+			as des,nombreProd from 
+		productos where oferta=true limit 4');
+		return $query;
+
+	}
+
+	function getDestacados(){
+		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
+			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
+			as des,nombreProd from 
+		productos where destacado=true limit 4');
+		return $query;
+
+	}
+
+	function getNuevos(){
+		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
+			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
+			as des,nombreProd from 
+		productos where destacado=false and oferta = false limit 4');
+		return $query;
+
 	}
 
 }
