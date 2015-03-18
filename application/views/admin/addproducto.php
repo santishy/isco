@@ -148,6 +148,7 @@
 		{
 			getProducto(id);
 		});
+		
 	});
 	});
 </script>

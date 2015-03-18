@@ -140,7 +140,7 @@ function addEspecificacion()
 }
 function eliminarCaracteristica(ele)
 {
-	var idcaracteristica=$(this).data('id');
+	var idcaracteristica=ele.data('id');
 	var rutafeatures=$("#rutaCaracteristicas").data('rutafeatures');
 	$.ajax({
 		url:rutafeatures,
@@ -169,7 +169,7 @@ function eliminarCaracteristica(ele)
 }
 function eliminarEspecificacion(ele)
 {
-	var idespecificacion=$(this).data('id');
+	var idespecificacion=ele.data('id');
 	var rutaEspecification=$("#modalEspecificaciones").data('ruta');
 	$.ajax({
 		url:rutaEspecification,
@@ -213,7 +213,7 @@ function getProducto(id)
 
 			if(!jQuery.isEmptyObject(resp))
 			{
-				$("#id_categoria").removeClass('initialized');
+				
 				$.each(resp[0],function(index,value)
 				{
 					if(index!="destacado" && index!="oferta" && index!="id_categoria")
@@ -228,11 +228,18 @@ function getProducto(id)
 							$('#'+index).attr('checked',false);
 						if(index=="id_categoria")
 						{
-							$('#'+index+' option[value="'+value+'"]').attr('selected',true);
+							$("#id_categoria").removeClass('initialized');
+							$('#'+index+'  option[value="'+value+'"]').attr('selected',true);
 							clonCategory();
 						}
 							
 					});
+				$("#etiqueta_c").attr('disabled',false);
+				$("#caracteristica").attr('disabled',false);
+				$("#id_producto_e").val($("#id_producto").val());
+				$("#id_producto_c").val($("#id_producto").val());
+				$("#especificacion").attr('disabled',false);
+				$("#etiqueta_e").attr('disabled',false);
 			}
 			else
 				alert('Recargue la pagina');
@@ -280,15 +287,55 @@ function getEspecificaciones(id_especificacion)
 		{
 			if(!jQuery.isEmptyObject(resp))
 			{
-				for(i=0;resp.length;i++)
+				alert(resp.length)
+				for(var i=0;i<resp.length;i++)
 				{
-					$("#tableEspecificaciones").append('<tr><td>'+resp[i].etiqueta_e+'</td><td>'+resp[0].especificacion+'</td><td><button class="btn waves-effect waves-light red accent-3 btnEliEspecificacion" data-id="'+resp[i].id_especificacion+'"><i class="mdi-navigation-cancel"></></button></td></tr>');
+					$("#tableEspecificaciones").append('<tr><td>'+resp[i].etiqueta_e+'</td><td>'+resp[i].especificacion+'</td><td><button class="btn waves-effect waves-light red accent-3 btnEliEspecificacion" data-id="'+resp[i].id_especificacion+'"><i class="mdi-navigation-cancel"></></button></td></tr>');
+					$.each($('.btnEliEspecificacion'),function(){
+						$(this).on('click',function(){eliminarEspecificacion($(this))});
+					});
+
 				}
+
 			}
 		},
 		complete:function(resp)
 		{
-			alert('completo')
+			
+		},
+		error:function(xhr,error,estado)
+		{
+			alert(xhr+" "+error+" "+estado);
+		}
+	});
+}
+function getCaracteristicas(id_caracteristica)
+{
+	var ruta=$('#modalCaracteristicas').data('get');
+	$.ajax({
+		url:ruta,
+		type:'post',
+		data:{id_producto:$("#id_producto").val()},
+		dataType:'json',
+		beforeSend:function(){},
+		success:function(resp)
+		{
+			if(!jQuery.isEmptyObject(resp))
+			{
+				for(i=0;i<resp.length;i++)
+				{
+					$("#tableCaracteristicas").append('<tr><td>'+resp[i].etiqueta_c+'</td><td>'+resp[i].caracteristica+'</td><td><button class="btn waves-effect waves-light red accent-3 btnEliCaracteristica" data-id="'+resp[i].id_caracteristica+'"><i class="mdi-navigation-cancel"></></button></td></tr>');
+					$.each($('.btnEliCaracteristica'),function(){
+						$(this).on('click',function(){eliminarCaracteristica($(this))});
+					});
+
+				}
+
+			}
+		},
+		complete:function(resp)
+		{
+			
 		},
 		error:function(xhr,error,estado)
 		{

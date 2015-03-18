@@ -18,6 +18,11 @@ $(document).on('ready',function()
 	});
 	btn_modalCaracteristicas.on('click',function()
 	{
+		$("#tableCaracteristicas tbody").remove();
+		$.getScript(rutaFunctions,function()
+		{	
+			getCaracteristicas();
+		});
 		$("#modalCaracteristicas").openModal();
 	});
 	//---------------------especificaciones------------------------------------------------
@@ -31,11 +36,12 @@ $(document).on('ready',function()
 	});
 	btn_modalEspecificaciones.on('click',function()
 	{
+		$("#tableEspecificaciones tbody").remove();
 		$.getScript(rutaFunctions,function()
 		{	
 			getEspecificaciones();
 		});
-		alert('hola')
-		$("#modalEspecificaciones").openModal();
+		
+		$("#modalEspecificaciones ").openModal();
 	});
 });
