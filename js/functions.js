@@ -266,3 +266,33 @@ function clonCategory()
 	$("#id_categoria").material_select();
 	$('select').material_select();
 }
+/*sacar especificaciones */
+function getEspecificaciones(id_especificacion)
+{
+	var ruta=$('#modalEspecificaciones').data('get');
+	$.ajax({
+		url:ruta,
+		type:'post',
+		data:{id_producto:$("#id_producto").val()},
+		dataType:'json',
+		beforeSend:function(){},
+		success:function(resp)
+		{
+			if(!jQuery.isEmptyObject(resp))
+			{
+				for(i=0;resp.length;i++)
+				{
+					$("#tableEspecificaciones").append('<tr><td>'+resp[i].etiqueta_e+'</td><td>'+resp[0].especificacion+'</td><td><button class="btn waves-effect waves-light red accent-3 btnEliEspecificacion" data-id="'+resp[i].id_especificacion+'"><i class="mdi-navigation-cancel"></></button></td></tr>');
+				}
+			}
+		},
+		complete:function(resp)
+		{
+			alert('completo')
+		},
+		error:function(xhr,error,estado)
+		{
+			alert(xhr+" "+error+" "+estado);
+		}
+	});
+}

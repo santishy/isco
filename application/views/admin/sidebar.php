@@ -23,6 +23,14 @@
 						<!-- Dropdown Structure -->
 						<ul id='dropdown2' class='dropdown-content'>
 						    <li class="edit" data-id="<?=$row->id_producto?>"><a href="#!">Editar</a></li>
+						    <li class="edit" data-id="<?=$row->id_producto?>">
+						    	<a href="#!">
+						    		<form method="post" action="<?=base_url()?>admin/eliminarProducto">
+						    			<input type="hidden"name="id_producto" value="<?=$row->id_producto?>"/>
+						    			<button class="btn waves-effect waves-light red accent-3" ><i class="mdi-navigation-cancel"></i></button>
+						    		</form>
+						    	</a>
+							</li>
 						</ul>
 					</td>
 					<td>

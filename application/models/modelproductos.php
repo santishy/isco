@@ -41,6 +41,31 @@ class ModelProductos extends CI_Model
 		$this->db->where('id_producto',$id);
 		$this->db->update('productos',$data);
 	}
+	/*----------------------------ELIMINAR PRODUCTOS-------FUNCIONES REQUERIDAS -------------*/
+	function eliminarCaracteristicas($id_producto)
+	{
+		$this->db->where('id_producto',$id_producto);
+		$query=$this->db->delete('caracteristicas');
+		return $query;
+	}
+	function eliminarEspecificaciones($id_producto)
+	{
+		$this->db->where('id_producto',$id_producto);
+		$query=$this->db->delete('especificaciones');
+		return $query;
+	}
+	function eliminarProducto($id_producto)
+	{
+		$this->db->where('id_producto',$id_producto);
+		$query=$this->db->delete('productos');
+		return $query;
+	}
+	function eliminarImagenes($id_producto)
+	{
+		$this->db->where('id_producto',$id_producto);
+		$query=$this->db->delete('imagenes');
+		return $query;
+	}
 	/*--------------------------------caracteristicas----------------------------------------*/
 	function getCaracteristica($data)
 	{
@@ -71,6 +96,12 @@ class ModelProductos extends CI_Model
 	{
 		$query=$this->db->query('select *from especificaciones where id_producto='.$data['id_producto'].'
 			and etiqueta_e="'.$data['etiqueta_e'].'" and especificacion="'.$data['especificacion'].'";');
+		return $query;
+	}
+	function getEspecificaciones($id_especificacion)
+	{
+		$this->db->where('id_especificacion',$id_especificacion);
+		$query=$this->db->get('especificaciones');
 		return $query;
 	}
 	function addEspecificacion($data)

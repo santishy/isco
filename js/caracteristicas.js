@@ -31,6 +31,11 @@ $(document).on('ready',function()
 	});
 	btn_modalEspecificaciones.on('click',function()
 	{
+		$.getScript(rutaFunctions,function()
+		{	
+			getEspecificaciones();
+		});
+		alert('hola')
 		$("#modalEspecificaciones").openModal();
 	});
 });

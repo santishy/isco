@@ -141,6 +141,18 @@ class Admin extends CI_Controller {
 		else 
 			return true;
 	}
+	#COMPROBAR FUNCION, HAY QUE ELIMINAR EL PRODUCTO DE OTRAS TABLAS...
+	public function eliminarProducto()
+	{
+		$id_producto=$this->input->post('id_producto');
+		$this->ModelProductos->eliminarImagenes($id_producto);
+		$this->ModelProductos->eliminarCaracteristicas($id_producto);
+		$this->ModelProductos->eliminarEspecificaciones($id_producto);
+		$this->ModelProductos->eliminarProducto($id_producto);
+		$data['mensaje']="";
+		$data['id_producto']="";
+		$this->frmProducto($data);
+	}
 	/*----------------------------------Categorias ------------------------------------------*/
 	# agregar categoria---------
 	function addCategory()
@@ -251,6 +263,13 @@ class Admin extends CI_Controller {
 		}
 		return $ban;
 	}
-
+	#sacar todas las especificaciones al apretar el button circulo
+	function getEspecificaciones()
+	{
+		$id_especificacion=$this->input->post('id_especificacion');
+		$query=$this->ModelProductos->getEspecificaciones($id_especificacion);
+		echo json_encode($query->result());
+	}
+	#sacar todas las caracteristicas al apretar el button circulo
 }
 ?>
