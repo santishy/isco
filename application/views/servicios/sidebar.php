@@ -2,7 +2,7 @@
 	<div class="col s6">
 		
 	</div>
-	<div class="card-panel light-withe light-2">
+	<div id="panelServicio" class="card-panel light-withe light-2" data-ruta="<?=base_url()?>servicios/getServicio">
 		<h4>Lista</h4>
 		<table class="bordered">
 			<thead>
@@ -34,7 +34,7 @@
 							<a class='dropdown-button btn' href='#' data-activates='dropdown2' style="padding:0 15px;margin:5px"><i class="mdi-action-view-headline"></i></a>
 							<!-- Dropdown Structure -->
 							<ul id='dropdown2' class='dropdown-content'>
-							    <li class="edit" data-id="<?=$row->id?>"><a href="#!">Editar</a></li>
+							    <li class="edit-servicio" data-id="<?=$row->id?>"><a href="#!">Editar</a></li>
 							    <li>
 							    	<form method="post" action="<?=base_url()?>servicios/eliminarServicio">
 							    		<input type="hidden" name="id" value="<?=$row->id?>"?>
@@ -49,3 +49,4 @@
 		</table>
 	</div>
 </div><!-- fin -->
+<script src="<?=base_url()?>js/sidebar-servicio.js"></script>

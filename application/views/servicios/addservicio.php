@@ -31,7 +31,8 @@
 				        <span>Imagen</span>
 				        <input type="file" id="fileImagen" name="fileImagen"/>
 				       	<input type="hidden" name="imagen" id="rutaImagen">
-				       	<input type="hidden" name="id" id="id_producto">
+				       	<!--input type="hidden" name="id" id="id_producto"-->
+				       	<input type="hidden" name="id" id="id">
 				    </div>
 			    </div>
 			</div>

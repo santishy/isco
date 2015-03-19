@@ -10,9 +10,16 @@ class ModelServicio extends CI_Model
 		$query=$this->db->insert('servicios',$data);
 		return $query;
 	}
-	function validarSrv($data)
+	function validarSrv($titulo)
 	{
-		$this->db->where('titulo',$data);
+		$this->db->where('titulo',$titulo);
+		$query=$this->db->get('servicios');
+		return $query;
+	}
+	function validarSrvModi($titulo,$id)
+	{
+		$this->db->where('titulo',$titulo);
+		$this->db->where('id',$id);
 		$query=$this->db->get('servicios');
 		return $query;
 	}
@@ -25,5 +32,17 @@ class ModelServicio extends CI_Model
 	{
 		$this->db->where('id',$id);
 		$this->db->delete('servicios');
+	}
+	function modificarServicio($data,$id)
+	{
+		$this->db->where('id',$id);
+		$query=$this->db->update('servicios',$data);
+		return $query;
+	}
+	function getServicio($id)
+	{
+		$this->db->where('id',$id);
+		$query=$this->db->get('servicios');
+		return $query;
 	}
 }

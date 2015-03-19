@@ -140,7 +140,8 @@
 			}
 		});
 	}
-	//parte del sidebar
+	//parte del sidebar------------------------------------------------------------------
+	
 	$('.edit').on('click',function(){
 		id=$(this).data('id');
 		$("#frmProducto").get(0).reset();
@@ -148,7 +149,7 @@
 		{
 			getProducto(id);
 		});
-		
+
 	});
 	});
 </script>

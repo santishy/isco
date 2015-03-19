@@ -14,7 +14,11 @@ class Servicios extends CI_Controller {
 	}
 	public function addServicio()
 	{
-		$this->form_validation->set_rules('titulo','Titulo','required|trim|callback_validarSrv');
+		if(strlen($this->input->post('id'))>0)
+			$regla='required|trim';
+		else
+			$regla='required|trim|callback_validarSrv';
+		$this->form_validation->set_rules('titulo','Titulo',$regla);
 		$this->form_validation->set_rules('contenido','Contenido','required|trim');
 		$this->form_validation->set_rules('imagen','Imagen','required|trim');
 		if($this->form_validation->run()===false)
@@ -28,11 +32,31 @@ class Servicios extends CI_Controller {
 			$data['imagen']=$this->input->post('imagen');
 			if(strlen($this->input->post('slider'))>0)
 				$data['slider']=$this->input->post('slider');
-			$query=$this->ModelServicio->addServicio($data);
-			if($query)
-				$this->frmservicio("Inserción Correcta");
+			if(strlen($this->input->post('id'))>0)
+			{
+				$validacion=$this->ModelServicio->validarSrvModi($data['titulo'],$this->input->post('id'));
+				if($validacion->num_rows()==1)
+				{
+					$id=$this->input->post('id');
+					$this->ModelServicio->modificarServicio($data,$id);
+					$cadena="Modificación Correcta";
+				}
+				else
+				{
+					$id=$this->input->post('id');
+					//$this->ModelServicio->modificarServicio($data,$id);
+					$cadena="Ya existe un item con el mismo titulo";
+				}
+			}
 			else 
-				$this->frm("Inserción Incorrecta");
+			{
+				$query=$this->ModelServicio->addServicio($data);
+				if($query)
+					$cadena="Inserción Correcta";
+				else 
+					$cadena="Inserción Incorrecta";
+			}
+			$this->frmservicio($cadena);
 		}
 	}
 	public function frmservicio($cad)
@@ -46,8 +70,8 @@ class Servicios extends CI_Controller {
 	}
 	public function validarSrv($str)
 	{
-		$data=$this->input->post('titulo');
-		$query=$this->ModelServicio->validarSrv($data);
+		$titulo=$this->input->post('titulo');
+		$query=$this->ModelServicio->validarSrv($titulo);
 		if($query->num_rows()>0)
 		{
 			$this->form_validation->set_message('validarSrv','Ya existe un servicio con ese titulo');
@@ -61,5 +85,11 @@ class Servicios extends CI_Controller {
 		$id=$this->input->post('id');
 		$this->ModelServicio->eliminarServicio($id);
 		$this->frmservicio("Equipo Eliminado");
+	}
+	function getServicio()
+	{
+		$id=$this->input->post('id');
+		$query=$this->ModelServicio->getServicio($id);
+		echo json_encode($query->result());
 	}
 }
