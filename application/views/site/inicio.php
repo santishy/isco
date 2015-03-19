@@ -3,7 +3,7 @@
 		<ul class="bxslider">
 			<?php if($sliders->num_rows() > 0) foreach ($sliders->result() as $slide) {?>
 				<?php $url = strtolower($slide->titulo); $url = str_replace(" ", "-", $url); ?>
-				<li><a href="<?=base_url()?>anuncios/<?=$url?>/<?=$slide->id?>"><img src="<?=base_url()?>imgslider/<?=$slide->imagen?>" alt="" /></a></li>
+				<li><a href="<?=base_url()?>anuncios/<?=$url?>/<?=$slide->id?>"><img src="<?=base_url()?>uploads/<?=$slide->imagen?>" alt="" /></a></li>
 			<?php } else {?>
 			<li><a href="#"><img src="<?=base_url()?>img/2.jpg" alt=""></a></li>
 			<?php } ?>
@@ -23,10 +23,12 @@
 			<div class="products">
 				<?php foreach ($ofertas->result() as $offer) { ?>
 					<div class="boxProduct">
-						<figure class="imagen">
-							<img src="<?=base_url()?>uploads/<?=$offer->imagen?>" alt="">
-							<figcaption><?=$offer->nombreProd?></figcaption>
-						</figure>
+						<a href="<?=base_url()?>productos/<?=$offer->id_producto?>">
+							<figure class="imagen">
+								<img src="<?=base_url()?>uploads/<?=$offer->imagen?>" alt="">
+								<figcaption><?=$offer->nombreProd?></figcaption>
+							</figure>
+						</a>
 						<!--<div><?=$offer->des?></div>-->
 					</div>
 				<?php } ?>	
@@ -42,10 +44,12 @@
 			<div class="products">
 				<?php foreach ($destacados->result() as $dest) { ?>
 					<div class="boxProduct">
-						<figure class="imagen">
-							<img src="<?=base_url()?>uploads/<?=$dest->imagen?>" alt="">
-							<figcaption><?=$dest->nombreProd?></figcaption>
-						</figure>
+						<a href="<?=base_url()?>productos/<?=$dest->id_producto?>">
+							<figure class="imagen">
+								<img src="<?=base_url()?>uploads/<?=$dest->imagen?>" alt="">
+								<figcaption><?=$dest->nombreProd?></figcaption>
+							</figure>
+						</a>
 						<!--<div><?=$offer->des?></div>-->
 					</div>
 				<?php } ?>	
@@ -59,19 +63,16 @@
 			<div class="products">
 				<?php foreach ($novedades->result() as $new) { ?>
 					<div class="boxProduct">
-						<figure class="imagen">
-							<img src="<?=base_url()?>uploads/<?=$new->imagen?>" alt="">
-							<figcaption><?=$new->nombreProd?></figcaption>
-						</figure>
+						<a href="<?=base_url()?>productos/<?=$new->id_producto?>">
+							<figure class="imagen">
+								<img src="<?=base_url()?>uploads/<?=$new->imagen?>" alt="">
+								<figcaption><?=$new->nombreProd?></figcaption>
+							</figure>
+						</a>
 						<!--<div><?=$offer->des?></div>-->
 					</div>
 				<?php } ?>	
-				<div class="boxProduct">
-					<figure class="imagen">
-						<img src="<?=base_url()?>img/lap.jpg" alt="" />
-						<figcaption>Computadora Lenovo IdeaCentre Q180, Procesador Intel Atom </figcaption>
-					</figure>
-				</div>
+				
 				
 			</div>
 

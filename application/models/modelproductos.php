@@ -48,6 +48,12 @@ class ModelProductos extends CI_Model
 			and etiqueta_c="'.$data['etiqueta_c'].'" and caracteristica="'.$data['caracteristica'].'";');
 		return $query;
 	}
+
+	function getCaracteristicas($id){
+		$this->db->where('id_producto',$id);
+		$query = $this->db->get('caracteristicas');
+		return $query;
+	}
 	
 	function addCaracteristica($data)
 	{
@@ -73,6 +79,12 @@ class ModelProductos extends CI_Model
 			and etiqueta_e="'.$data['etiqueta_e'].'" and especificacion="'.$data['especificacion'].'";');
 		return $query;
 	}
+	function getEspecificaciones($id){
+		$this->db->where('id_producto',$id);
+		$query = $this->db->get('especificaciones');
+		return $query;
+	}
+	
 	function addEspecificacion($data)
 	{
 		$query=$this->db->insert('especificaciones',$data);
@@ -90,5 +102,13 @@ class ModelProductos extends CI_Model
 		$query=$this->db->delete('especificaciones');
 		return $query;
 	}
+
+	/*----------------imagenes ---------------------------*/
+
+	function getImagenes($id){
+		$this->db->where('id_producto',$id);
+		$query = $this->db->get('imagenes');
+		return $query;
+	}	
 }
 ?>

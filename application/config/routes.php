@@ -42,6 +42,8 @@ $route['default_controller'] = "inicio/index";
 $route['404_override'] = '';
 $route['anuncios/(:any)'] = "anuncios/aviso/";
 
+$route['productos/(:num)'] = "productos/getProduct/";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

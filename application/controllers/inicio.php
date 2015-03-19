@@ -15,8 +15,8 @@ class Inicio extends CI_Controller {
 	}
 
 	function getFooter(){
-		$data['query']=$this->ModelCategorias->getCategoriasLimit();
-		$this->load->view('includes/footer',$data);
+		//$data['query']=$this->ModelCategorias->getCategoriasLimit();
+		$this->load->view('includes/footer');
 	}
 
 	function aviso(){
@@ -30,10 +30,10 @@ class Inicio extends CI_Controller {
 
 	function home(){
 		$data['sliders'] = $this->ModelHome->getSlider();
-		$this->getHeader();
 		$data['ofertas'] = $this->ModelHome->getOffer();
 		$data['destacados'] = $this->ModelHome->getDestacados();
 		$data['novedades'] = $this->ModelHome->getNuevos();
+		$this->getHeader();
 		$this->load->view('site/inicio',$data);
 		$this->getFooter();
 
