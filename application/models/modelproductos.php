@@ -102,12 +102,7 @@ class ModelProductos extends CI_Model
 		$query=$this->db->delete('caracteristicas');
 		return $query;
 	}
-	function getCaracteristicas($id_producto)
-	{
-		$this->db->where('id_producto',$id_producto);
-		$query=$this->db->get('caracteristicas');
-		return $query;
-	}
+	
 	/*--------------------------------especifiaciones----------------------------------------*/
 	function getEspecificacion($data)
 	{
