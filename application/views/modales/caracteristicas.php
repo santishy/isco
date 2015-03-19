@@ -1,4 +1,4 @@
-<div id="modalCaracteristicas" class="modal" data-ruta="<?=base_url()?>">
+<div id="modalCaracteristicas" class="modal" data-get="<?=base_url()?>admin/getCaracteristicas">
     <div class="modal-content">
       <h4>Caracteristicas</h4>
       <div class="divider"></div>

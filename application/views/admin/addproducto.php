@@ -128,7 +128,6 @@
 					}
 					else 
 						alert('Ya existe esa categoria');
-					
 				}
 				else 
 					alert("No se pudo insertar");
@@ -149,7 +148,7 @@
 		{
 			getProducto(id);
 		});
-
-	})
+		
+	});
 	});
 </script>

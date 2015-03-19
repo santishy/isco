@@ -18,6 +18,11 @@ $(document).on('ready',function()
 	});
 	btn_modalCaracteristicas.on('click',function()
 	{
+		$("#tableCaracteristicas tbody").remove();
+		$.getScript(rutaFunctions,function()
+		{	
+			getCaracteristicas();
+		});
 		$("#modalCaracteristicas").openModal();
 	});
 	//---------------------especificaciones------------------------------------------------
@@ -31,6 +36,12 @@ $(document).on('ready',function()
 	});
 	btn_modalEspecificaciones.on('click',function()
 	{
-		$("#modalEspecificaciones").openModal();
+		$("#tableEspecificaciones tbody").remove();
+		$.getScript(rutaFunctions,function()
+		{	
+			getEspecificaciones();
+		});
+		
+		$("#modalEspecificaciones ").openModal();
 	});
 });

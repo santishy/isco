@@ -1,4 +1,4 @@
-<div id="modalEspecificaciones" class="modal" data-ruta="<?=base_url()?>admin/eliminarEspecificacion">
+<div id="modalEspecificaciones" class="modal" data-ruta="<?=base_url()?>admin/eliminarEspecificacion" data-get="<?=base_url()?>admin/getEspecificaciones">
     <div class="modal-content">
       <h4>Especificaciones</h4>
       <div class="divider"></div>

@@ -116,7 +116,8 @@ class Admin extends CI_Controller {
 	function frmProducto($data)
 	{
 		$data['query']=$this->ModelCategorias->getCategorias();
-		$data['caracteristicas']=$this->ModelProductos->getLastCaracteristicas();
+		if(!isset($data['caracteristicas']))
+			$data['caracteristicas']=$this->ModelProductos->getLastCaracteristicas();
 		$this->load->view('admin/header',$data);
 		$this->load->view('admin/addproducto');
 		$this->load->view('admin/caracteristicas');
@@ -140,6 +141,27 @@ class Admin extends CI_Controller {
 		} 
 		else 
 			return true;
+	}
+	#COMPROBAR FUNCION, HAY QUE ELIMINAR EL PRODUCTO DE OTRAS TABLAS...
+	public function eliminarProducto()
+	{
+		$id_producto=$this->input->post('id_producto');
+		$this->ModelProductos->eliminarImagenes($id_producto);
+		$this->ModelProductos->eliminarCaracteristicas($id_producto);
+		$this->ModelProductos->eliminarEspecificaciones($id_producto);
+		$this->ModelProductos->eliminarProducto($id_producto);
+		$data['mensaje']="";
+		$data['id_producto']="";
+		$this->frmProducto($data);
+	}
+	function buscarProducto()
+	{
+		$nombreprod=$this->input->post('nombreprod');
+		$query=$this->ModelProductos->buscarProducto($nombreprod);
+		$data["mensaje"]="";
+		$data['id_producto']="";
+		$data['caracteristicas']=$query;
+		$this->frmProducto($data);
 	}
 	/*----------------------------------Categorias ------------------------------------------*/
 	# agregar categoria---------
@@ -200,6 +222,13 @@ class Admin extends CI_Controller {
 		$query=$this->ModelProductos->eliminarCaracteristica($data);
 		echo $query;
 	}
+	#sacar todas las caracteristicas al apretar el boton circulo
+	function getCaracteristicas()
+	{
+		$id_producto=$this->input->post('id_producto');
+		$query=$this->ModelProductos->getCaracteristicas($id_producto);
+		echo json_encode($query->result());
+	}
 	/***************************************ESPECIFICACIONES**********************************************/
 	#AGREGAR ESPECIFICACION
 
@@ -235,8 +264,8 @@ class Admin extends CI_Controller {
 
 	function eliminarEspecificacion()
 	{
-		$data=$this->input->post();
-		$query=$this->ModelProductos->eliminarEspecificacion($data);
+		$id_especificacion=$this->input->post('id_especificacion');
+		$query=$this->ModelProductos->eliminarEspecificacion($id_especificacion);
 		echo $query;
 	}
 	function validarEmpty($data)
@@ -251,6 +280,13 @@ class Admin extends CI_Controller {
 		}
 		return $ban;
 	}
-
+	#sacar todas las especificaciones al apretar el button circulo
+	function getEspecificaciones()
+	{
+		$id_producto=$this->input->post('id_producto');
+		$query=$this->ModelProductos->getEspecificaciones($id_producto);
+		echo json_encode($query->result());
+	}
+	
 }
 ?>
