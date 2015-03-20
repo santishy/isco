@@ -35,7 +35,7 @@ class Servicios extends CI_Controller {
 			if(strlen($this->input->post('id'))>0)
 			{
 				$validacion=$this->ModelServicio->validarSrvModi($data['titulo'],$this->input->post('id'));
-				if($validacion->num_rows()==1)
+				if($validacion->num_rows()==0)
 				{
 					$id=$this->input->post('id');
 					$this->ModelServicio->modificarServicio($data,$id);
@@ -91,5 +91,15 @@ class Servicios extends CI_Controller {
 		$id=$this->input->post('id');
 		$query=$this->ModelServicio->getServicio($id);
 		echo json_encode($query->result());
+	}
+	function buscarTitulo()
+	{
+		$titulo=$this->input->post('titulo');	
+		$data[ 'query']=$this->ModelServicio->buscarTitulo($titulo);
+		$data['mensaje']="";
+		$this->load->view('admin/header',$data);
+		$this->load->view('servicios/addservicio');
+		$this->load->view('servicios/sidebar');
+		$this->load->view('admin/footer');
 	}
 }

@@ -1,7 +1,17 @@
 <div class="col s8">
-	<div class="col s6">
-		
+		<div class="card-panel light-withe light-2">
+			<div class="row">
+				<form method="post" action="<?=base_url()?>servicios/buscartitulo">
+			    <div class="input-field col s12">
+				     <i class="mdi-action-search prefix"></i>
+				     <input id="icon_prefix" type="text" name="titulo"class="validate">
+				     <label for="icon_prefix">Titulo</label>
+				</div>
+				</form>
+	     	</div>
+		</div>
 	</div>
+<div class="col s8">
 	<div id="panelServicio" class="card-panel light-withe light-2" data-ruta="<?=base_url()?>servicios/getServicio">
 		<h4>Lista</h4>
 		<table class="bordered">

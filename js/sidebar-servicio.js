@@ -21,10 +21,19 @@ function getServicio(ids)
 		{
 			if(!jQuery.isEmptyObject(resp))
 			{
-				$("#titulo").val(resp[0].titulo);
-				$("#contenido").val(resp[0].contenido);
-				$("#id").val(resp[0].id);
-				$("#slider").val(resp[0].slider);
+				$.each(resp[0],function(index,value)
+				{
+					if(index!="slider" )
+					{
+						$('#'+index).focus();
+						$('#'+index).val(value);
+					}
+					else 
+						if(value==1 )
+							$('#'+index).attr('checked',true);
+						else 
+							$('#'+index).attr('checked',false);
+				});
 				$("#rutaImagen").val(resp[0].imagen);
 			}
 			else

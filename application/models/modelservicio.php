@@ -19,7 +19,7 @@ class ModelServicio extends CI_Model
 	function validarSrvModi($titulo,$id)
 	{
 		$this->db->where('titulo',$titulo);
-		$this->db->where('id',$id);
+		$this->db->where('id !=',$id);
 		$query=$this->db->get('servicios');
 		return $query;
 	}
@@ -43,6 +43,11 @@ class ModelServicio extends CI_Model
 	{
 		$this->db->where('id',$id);
 		$query=$this->db->get('servicios');
+		return $query;
+	}
+	function buscarTitulo($titulo)
+	{
+		$query=$this->db->query("select *from servicios where titulo like '%".$titulo."%'order by id desc limit 5;");
 		return $query;
 	}
 }
