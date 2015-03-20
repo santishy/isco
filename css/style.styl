@@ -52,6 +52,7 @@ containerProducts(color)
 	position relative
 	width 90%
 	
+	
 .dos 
 	transform translateX(50px)		
 	
@@ -133,6 +134,72 @@ a.lnkNormal
 	min-height 300px
 	margin 1.5em auto
 	width 90%
+	
+.detailPro
+	background-color rgba(#cbcbcb,0.5)
+	border 1px solid azul_oscuro
+	border-radius 5px
+	height auto
+	margin 2.2em auto
+	min-height 300px
+	width 90%
+	
+	.imagenPro
+		border 3px solid rgba(#000,0.5)
+		border-radius 5px
+		display inline-block
+		height auto
+		margin 1.1em
+		vertical-align top
+		width 60%
+		
+		figure 
+			border 1px solid rgba(#000,0.5)
+			height 250px
+			margin 10px auto
+			width 60%
+		
+		ul 
+			list-style none
+			margin 0 auto
+			padding 2px
+			width 90%
+			
+			li 
+				border 1px solid azul_oscuro
+				border-radius 3px
+				display inline-block
+				cursor pointer
+				height 90%
+				margin 0 5px 10px 0
+				width 10%
+				
+				img 
+					height 50px
+					width 100%	
+					
+	.prodName
+		display inline-block
+		margin-top 8.5em
+		vertical-align top
+		width 35%		
+		
+		h1 
+			color azul_oscuro	
+			margin 0 auto
+			width 90%
+			
+		p
+			margin 10px auto
+			width 90%	
+			
+		p:nth-child(3) 
+			color #000
+			font-size 26px
+	
+			span 
+				color verde
+					
 	
 	
 footer
@@ -526,6 +593,19 @@ nav.navResp
 	transform translateX(-52px)	
 
 @media screen and (max-width:960px)
+
+	.detailPro
+		.imagenPro
+			width 90%
+			
+			ul 
+				li 
+					width 20%	
+					
+		.prodName	
+			margin-top 1em
+			width 100%
+			
 
 	footer
 		.footerBefore
