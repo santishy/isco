@@ -25,6 +25,7 @@ class Anuncios extends CI_Controller {
 		$this->getHeader();
 		$this->load->view('site/aviso',$data);
 		$this->getFooter();
+		$this->load->view('includes/endfile');
 
 	}
 

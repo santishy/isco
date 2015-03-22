@@ -7,10 +7,6 @@
 			<?php } else {?>
 			<li><a href="#"><img src="<?=base_url()?>img/2.jpg" alt=""></a></li>
 			<?php } ?>
-			<li><a href="#"><img src="<?=base_url()?>img/2.jpg" alt=""></a></li>
-			<li><a href="#"><img src="<?=base_url()?>img/3.jpg" alt=""></a></li>
-			<li><a href="#"><img src="<?=base_url()?>img/4.jpg" alt=""></a></li>
-			<li><a href="#"><img src="<?=base_url()?>img/5.jpg" alt=""></a></li>
 		</ul>
 	</div>
 	<!-- end SliderContainer-->

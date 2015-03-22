@@ -51,5 +51,3 @@
 <script src="<?=base_url()?>js/jquery.bxslider.min.js"></script>
 <script src="<?=base_url()?>js/main.js"></script>
 
-</body>
-</htm>	
