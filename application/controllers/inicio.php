@@ -34,6 +34,7 @@ class Inicio extends CI_Controller {
 		$data['ofertas'] = $this->ModelHome->getOffer();
 		$data['destacados'] = $this->ModelHome->getDestacados();
 		$data['novedades'] = $this->ModelHome->getNuevos();
+		$data['recomendados'] = $this->ModelHome->getRecomendados();
 		$this->getHeader();
 		$this->load->view('site/inicio',$data);
 		$this->getFooter();

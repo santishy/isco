@@ -77,24 +77,16 @@
 	<aside class="lateral">
 		<h3>Recomendados</h3>
 		<section class="recomendados">
-			<article>
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Laptop </figcaption>
-				</figure>
-			</article>
-			<article>
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Laptop </figcaption>
-				</figure>
-			</article>
-			<article>
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Laptop </figcaption>
-				</figure>
-			</article>
+			<?php foreach ($recomendados->result() as $rec) {?>
+			<a href="<?=base_url()?>productos/<?=$rec->id_producto?>">
+				<article>
+					<figure class="imagen">
+						<img src="<?=base_url()?>uploads/<?=$rec->imagen?>" alt="" />
+						<figcaption><?=$rec->nombreProd?></figcaption>
+					</figure>
+				</article>
+			</a>	
+			<?php } ?>
 			
 		</section>
 

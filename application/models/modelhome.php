@@ -24,7 +24,7 @@ class ModelHome extends CI_Model
 		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
 			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
 			as des,nombreProd from 
-		productos  where oferta=true order by id_producto desc limit 4');
+		productos  where oferta=true and destacado=false order by id_producto desc limit 4');
 		return $query;
 
 	}
@@ -33,9 +33,17 @@ class ModelHome extends CI_Model
 		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
 			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
 			as des,nombreProd from 
-		productos where destacado=true order by id_producto desc limit 4');
+		productos where destacado=true and oferta=false order by id_producto desc limit 4');
 		return $query;
 
+	}
+
+	function getRecomendados(){
+		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
+			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
+			as des,nombreProd from 
+		productos where destacado=true and oferta = true order by id_producto desc limit 3');
+		return $query;
 	}
 
 	function getNuevos(){
