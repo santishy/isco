@@ -6,6 +6,7 @@ class Productos extends CI_Controller {
 		parent::__construct();
 		$this->load->model('ModelCategorias');
 		$this->load->model('ModelProductos');
+		$this->load->model('ModelHome');
 
 	}
 
@@ -15,12 +16,14 @@ class Productos extends CI_Controller {
 	}
 
 	function getFooter(){
-		//$data['query']=$this->ModelCategorias->getCategoriasLimit();
-		$this->load->view('includes/footer');
+		$data['query']=$this->ModelCategorias->getCategoriasLimit();
+		$data['principalserv'] = $this->ModelHome->getServPrin();
+		$this->load->view('includes/footer',$data);
 	}
 
 	function getHeader(){
-		$data['query']=$this->ModelCategorias->getCategoriasLimit();
+		$data['categorias']=$this->ModelCategorias->getCategorias();
+		$data['servicios'] = $this->ModelHome->getServicios();
 		$this->load->view('includes/header',$data);
 	}
 
@@ -44,6 +47,10 @@ class Productos extends CI_Controller {
 		$this->load->view('includes/zoom');
 		$this->load->view('includes/endfile');
 		
+	}
+
+	function categoria($id){
+		echo 'hello';
 	}
 	
 }

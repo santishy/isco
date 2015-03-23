@@ -58,11 +58,18 @@
 			<ul class="menu">
 				<li><a href="<?=base_url()?>">INICIO</a></li>
 				<li><a href="#">QUIENES SOMOS</a></li>
-				<li><a href="#">SERVICIOS</a></li>
+				<li><a href="#">SERVICIOS</a>
+					<ul>
+						<?php foreach ($servicios->result() as $serv) { ?>
+						<?php $url = strtolower($serv->titulo); $url = str_replace(" ", "-", $url); ?>
+						<li><a href="<?=base_url()?>anuncios/<?=$url?>/<?=$serv->id?>"><?= $serv->titulo ?></a></li>
+						<?php } ?>
+					</ul>
+				</li>
 				<li><a href="">PRODUCTOS</a>
 					<ul>
-						<?php foreach ($query->result() as $cat) { ?>
-						<li><a href=""><?= $cat->nombre ?></a></li>
+						<?php foreach ($categorias->result() as $cat) { ?>
+						<li><a href="<?=base_url()?>productos/categoria/<?=$cat->id_categoria?>"><?= $cat->nombre ?></a></li>
 						<?php } ?>
 					</ul>
 				</li>

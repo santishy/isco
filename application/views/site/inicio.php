@@ -95,6 +95,15 @@
 	<!-- start section services -->
 	<section class="services">
 		<h3>Servicios</h3>
+		<?php if($principalserv->num_rows() > 0){ foreach($principalserv->result() as $s) { ?>
+		<?php  $url = strtolower($s->titulo); $url = str_replace(" ", "-", $url); ?> 
+			<div>
+				<a href="<?=base_url()?>anuncios/<?=$url?>/<?=$s->id?>" class="lnkNormal">
+					<p></p>
+					<p><?=$s->titulo?></p> 
+				</a>
+			</div>
+		<?php } } else { ?>
 		<div>
 			<a href="" class="lnkNormal">
 				<p></p>
@@ -119,4 +128,5 @@
 				<p>Redes</p> 
 			</a>
 		</div>
+		<?php } ?>
 	</section> <!-- end services-->

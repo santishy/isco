@@ -18,6 +18,13 @@ class ModelProductos extends CI_Model
 		order by id_producto desc limit 4');
 		return $query;
 	}
+	function prodCat(){
+		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen)
+		 from imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion
+		,1,50) as des,nombreProd from productos where id_categoria ='.$id.' order by id_producto desc');
+		return $query;
+	}
+
 	function maxId()
 	{
 		$query=$this->db->query('select max(id_producto) as id_producto from productos');

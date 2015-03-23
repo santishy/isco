@@ -8,14 +8,30 @@ class ModelHome extends CI_Model
 
 	function getSlider(){
 		$this->db->where("slider",true);
+		$this->db->order_by('id desc');
+		$this->db->limit(6);
 		$query = $this->db->get('servicios');
 		return $query;
 
 	}
 
+	function detailServicio($id){
+		$this->db->where("id",$id);
+		$this->db->where("slider",false);
+		$query = $this->db->get('servicios');
+		return $query;
+	}
+
+	function getServicios(){
+		$this->db->where("slider",false);
+		$this->db->select('id,titulo');
+		$query = $this->db->get('servicios');
+		return $query;
+	}
+
 	function getSlide($id){
 		$this->db->where("id",$id);
-		$this->db->where("slider",true);
+		//$this->db->where("slider",true);
 		$query = $this->db->get('servicios');
 		return $query;
 	}
@@ -43,6 +59,14 @@ class ModelHome extends CI_Model
 			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
 			as des,nombreProd from 
 		productos where destacado=true and oferta = true order by id_producto desc limit 3');
+		return $query;
+	}
+	
+	function getServPrin(){
+		$this->db->where("slider",false);
+		$this->db->select('id,titulo');
+		$this->db->limit(4);
+		$query = $this->db->get('servicios');
 		return $query;
 	}
 
