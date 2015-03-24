@@ -9,18 +9,24 @@
 	<title>APP</title>
 </head>
 <body>
-	<ul id="dropdown1" class="dropdown-content ">
-		  <li><a href="usuarios/cerrarSesion">Salir</a></li>
+<ul id="dropdown1" class="dropdown-content ">
+		  <li><a href="<?=base_url()?>servicios/addServicio">Editar</a></li>
+		  <li><a href="#!">Ver</a></li>
+		</ul>
+		<ul id="dropdown2" class="dropdown-content ">
+		  <li><a href="<?=base_url()?>admin/addProducto">Editar</a></li>
+		  <li><a href="#!">Ver</a></li>
 		</ul>
 		<nav>
 		  <div class="nav-wrapper blue darken-1">
 		    <div class="col s12">
-		      <a href="<?=base_url()?>admin" class="brand-logo">Administrador</a>
+		      <a href="#!" class="brand-logo">ISCO</a>
 		      <ul class="right hide-on-med-and-down">
-		        <li><a href="<?=base_url()?>servicios/addServicio">Servicios y Sliders</a></li>
-		        <li><a href="components.html">Usuarios</a></li>
 		        <!-- Dropdown Trigger -->
-		        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Opciones<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+		 		<li><a href="<?=base_url()?>usuarios/addUsuario"><i class="mdi-action-assignment-ind" style="font-size:1em"></i>Usuarios</a></li>
+		        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Servicios<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+		        <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Productos<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+		         <li><a href="<?=base_url()?>usuarios/cerrarSesion"><i class="mdi-navigation-cancel" style="font-size:1em"></i> Sesion</a></li>
 		      </ul>
 		    </div>
 		  </div>
