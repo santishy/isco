@@ -17,6 +17,8 @@ class Admin extends CI_Controller {
 
 	public function addProducto()
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect(base_url().'usuarios/login');
 		//$this->form_validation->set_rules('categoria','Categoria','required|callback_validarProd|trim');
 		$this->form_validation->set_rules('precio','Precio','required|trim|callback_validarProd');
 		$this->form_validation->set_rules('descripcion','Descripcion','required|trim');
@@ -53,6 +55,8 @@ class Admin extends CI_Controller {
 	}
 	function add($data,$img)
 	{
+			if(!$this->session->userdata('tipo'))
+				redirect('usuarios/login');
 			$query=$this->ModelProductos->addProducto($data);
 			$maxId=$this->ModelProductos->maxId();
 			foreach ($maxId->result() as $row) 
@@ -72,6 +76,8 @@ class Admin extends CI_Controller {
 	}
 	function change($data,$img,$id)
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$query=$this->ModelProductos->validarProd($data);
 		if($query->num_rows() == 0)
 		{
@@ -115,6 +121,8 @@ class Admin extends CI_Controller {
 	}
 	function frmProducto($data)
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$data['query']=$this->ModelCategorias->getCategorias();
 		if(!isset($data['caracteristicas']))
 			$data['caracteristicas']=$this->ModelProductos->getLastCaracteristicas();
@@ -145,6 +153,8 @@ class Admin extends CI_Controller {
 	#COMPROBAR FUNCION, HAY QUE ELIMINAR EL PRODUCTO DE OTRAS TABLAS...
 	public function eliminarProducto()
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$id_producto=$this->input->post('id_producto');
 		$this->ModelProductos->eliminarImagenes($id_producto);
 		$this->ModelProductos->eliminarCaracteristicas($id_producto);
@@ -156,6 +166,8 @@ class Admin extends CI_Controller {
 	}
 	function buscarProducto()
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$nombreprod=$this->input->post('nombreprod');
 		$query=$this->ModelProductos->buscarProducto($nombreprod);
 		$data["mensaje"]="";
@@ -167,6 +179,8 @@ class Admin extends CI_Controller {
 	# agregar categoria---------
 	function addCategory()
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$data['nombre']=$this->input->post('nombre');
 		$num=$this->ModelCategorias->getCategory($data['nombre']);
 		if($num->num_rows()>0)
@@ -188,7 +202,8 @@ class Admin extends CI_Controller {
 	# agregar Caracteristica-----
 	function addCaracteristica()
 	{
-
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$data=$this->input->post();
 		$ban=$this->validarEmpty($data);
 		if($ban)
@@ -234,7 +249,8 @@ class Admin extends CI_Controller {
 
 	function addEspecificacion()
 	{
-
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$data=$this->input->post();
 		$ban=$this->validarEmpty($data);
 		if($ban)
@@ -264,6 +280,8 @@ class Admin extends CI_Controller {
 
 	function eliminarEspecificacion()
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$id_especificacion=$this->input->post('id_especificacion');
 		$query=$this->ModelProductos->eliminarEspecificacion($id_especificacion);
 		echo $query;

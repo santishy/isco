@@ -14,6 +14,8 @@ class Servicios extends CI_Controller {
 	}
 	public function addServicio()
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect(base_url().'usuarios/login');
 		if(strlen($this->input->post('id'))>0)
 			$regla='required|trim';
 		else
@@ -61,6 +63,8 @@ class Servicios extends CI_Controller {
 	}
 	public function frmservicio($cad)
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$data['mensaje']=$cad;
 		$data[ 'query']=$this->ModelServicio->getLastServicios();
 		$this->load->view('admin/header',$data);
@@ -70,6 +74,8 @@ class Servicios extends CI_Controller {
 	}
 	public function validarSrv($str)
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$titulo=$this->input->post('titulo');
 		$query=$this->ModelServicio->validarSrv($titulo);
 		if($query->num_rows()>0)
@@ -82,6 +88,8 @@ class Servicios extends CI_Controller {
 	}
 	function eliminarServicio()
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$id=$this->input->post('id');
 		$this->ModelServicio->eliminarServicio($id);
 		$this->frmservicio("Equipo Eliminado");
@@ -94,6 +102,8 @@ class Servicios extends CI_Controller {
 	}
 	function buscarTitulo()
 	{
+		if(!$this->session->userdata('tipo'))
+			redirect('usuarios/login');
 		$titulo=$this->input->post('titulo');	
 		$data[ 'query']=$this->ModelServicio->buscarTitulo($titulo);
 		$data['mensaje']="";
