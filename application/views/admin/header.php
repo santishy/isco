@@ -10,20 +10,17 @@
 </head>
 <body>
 	<ul id="dropdown1" class="dropdown-content ">
-		  <li><a href="#!">Servicios</a></li>
-		  <li><a href="#!">two</a></li>
-		  <li class="divider"></li>
-		  <li><a href="#!">three</a></li>
+		  <li><a href="#!">Salir</a></li>
 		</ul>
 		<nav>
 		  <div class="nav-wrapper blue darken-1">
 		    <div class="col s12">
-		      <a href="#!" class="brand-logo">Logo</a>
+		      <a href="<?=base_url()?>admin" class="brand-logo">Administrador de contenidos</a>
 		      <ul class="right hide-on-med-and-down">
-		        <li><a href="<?=base_url()?>servicios/addServicio">Servicios</a></li>
-		        <li><a href="components.html">Components</a></li>
+		        <li><a href="<?=base_url()?>servicios/addServicio">Servicios y Sliders</a></li>
+		        <li><a href="components.html">Usuarios</a></li>
 		        <!-- Dropdown Trigger -->
-		        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+		        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Opciones<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
 		      </ul>
 		    </div>
 		  </div>
