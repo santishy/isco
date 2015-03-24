@@ -25,4 +25,10 @@ class ModelUsuario extends CI_Model
 		$query=$this->db->query('select *from usuarios order by id_user desc limit 5;');
 		return $query;
 	}
+	function eliminarUser($id_user)
+	{
+		$this->db->where('id_user',$id_user);
+		$query=$this->db->delete('usuarios');
+		return $query;
+	}
 }

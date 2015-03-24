@@ -29,15 +29,28 @@
 						<td><?=$row->nombre?></td>
 						<td><?=$row->user?></td>
 						<td><?=$row->correo?></td>
-						<td><?=$row->tipo?></td>
+						<td><?php switch ($row->tipo) {
+							case '1':
+								echo 'ADMINISTRADOR';
+								break;
+							case '2':
+								echo 'EMPLEADO';
+								break;
+							case '3':
+								echo 'TECNICO';
+								break;
+							default:
+								# code...
+								break;
+						}?></td>
 						<td>
 							<a class='dropdown-button btn' href='#' data-activates='dropdown3' style="padding:0 15px;margin:5px"><i class="mdi-action-view-headline"></i></a>
 							<!-- Dropdown Structure -->
 							<ul id='dropdown3' class='dropdown-content'>
 							    <li class="edit-usuario" data-id="<?=$row->id_user?>"><a href="#!">Editar</a></li>
 							    <li>
-							    	<form method="post" action="<?=base_url()?>usuarios/eliminarUsuario">
-							    		<input type="hidden" name="id" value="<?=$row->id_user?>"?>
+							    	<form method="post" action="<?=base_url()?>usuarios/eliminarUser">
+							    		<input type="hidden" name="id_user" value="<?=$row->id_user?>"?>
 							    		<button class="btn waves-effect waves-light  pink accent-3"><i class="mdi-navigation-cancel"></i></button>
 							    	</form>
 							    </li>

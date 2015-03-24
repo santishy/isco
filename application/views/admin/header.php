@@ -10,12 +10,12 @@
 </head>
 <body>
 	<ul id="dropdown1" class="dropdown-content ">
-		  <li><a href="#!">Salir</a></li>
+		  <li><a href="usuarios/cerrarSesion">Salir</a></li>
 		</ul>
 		<nav>
 		  <div class="nav-wrapper blue darken-1">
 		    <div class="col s12">
-		      <a href="<?=base_url()?>admin" class="brand-logo">Administrador de contenidos</a>
+		      <a href="<?=base_url()?>admin" class="brand-logo">Administrador</a>
 		      <ul class="right hide-on-med-and-down">
 		        <li><a href="<?=base_url()?>servicios/addServicio">Servicios y Sliders</a></li>
 		        <li><a href="components.html">Usuarios</a></li>

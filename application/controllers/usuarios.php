@@ -64,6 +64,13 @@ class Usuarios extends CI_Controller {
 			return true;
 		}
 	}
+	function eliminarUser()
+	{
+		$id_user=$this->input->post('id_user');
+		$this->ModelUsuario->eliminarUser($id_user);
+		$data['mensaje']="";
+		$this->frmUsuario($data);
+	}
 	//----------------------------------login---------------------------
 	function login()
 	{
