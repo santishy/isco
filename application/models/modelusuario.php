@@ -20,9 +20,9 @@ class ModelUsuario extends CI_Model
 		$query=$this->db->query('select *from usuarios where user="'.$user.'" and pass="'.$pass.'"');
 		return $query;
 	}
-	function getLastServicios()
+	function getLastUsers()
 	{
-		$query=$this->db->query('select *from usuarios order by id desc limit 5;');
+		$query=$this->db->query('select *from usuarios order by id_user desc limit 5;');
 		return $query;
 	}
 }

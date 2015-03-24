@@ -41,8 +41,10 @@ class Usuarios extends CI_Controller {
 	{
 		if(!$this->session->userdata('tipo'))
 			redirect(base_url().'usuarios/login');
+		$data['query']=$this->ModelUsuario->getLastUsers();
 		$this->load->view('admin/header',$data);
 		$this->load->view('users/addusuario');
+		$this->load->view('users/sidebar');
 		$this->load->view('admin/footer');
 	}
 	function validUser()
