@@ -15,8 +15,8 @@ class Inicio extends CI_Controller {
 	}
 
 	function getFooter(){
-		//$data['query']=$this->ModelCategorias->getCategoriasLimit();
-		$this->load->view('includes/footer');
+		$data['query']=$this->ModelCategorias->getCategoriasLimit();
+		$this->load->view('includes/footer',$data);
 	}
 
 	function aviso(){
@@ -25,6 +25,7 @@ class Inicio extends CI_Controller {
 		$this->getHeader();
 		$this->load->view('site/aviso',$data);
 		$this->getFooter();
+		$this->load->view('includes/endfile');
 
 	}
 
@@ -33,14 +34,19 @@ class Inicio extends CI_Controller {
 		$data['ofertas'] = $this->ModelHome->getOffer();
 		$data['destacados'] = $this->ModelHome->getDestacados();
 		$data['novedades'] = $this->ModelHome->getNuevos();
+		$data['recomendados'] = $this->ModelHome->getRecomendados();
+		$data['principalserv'] = $this->ModelHome->getServPrin();
 		$this->getHeader();
 		$this->load->view('site/inicio',$data);
 		$this->getFooter();
+		$this->load->view('includes/endfile');
 
 	}
 
 	function getHeader(){
-		$data['query']=$this->ModelCategorias->getCategoriasLimit();
+		$data['categorias']=$this->ModelCategorias->getCategorias();
+		$data['servicios'] = $this->ModelHome->getServicios();
 		$this->load->view('includes/header',$data);
 	}
+	
 }

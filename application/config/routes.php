@@ -44,6 +44,8 @@ $route['anuncios/(:any)'] = "anuncios/aviso/";
 
 $route['productos/(:num)'] = "productos/getProduct/";
 
+$route['categoria/(:any)'] = "categoria/index/";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

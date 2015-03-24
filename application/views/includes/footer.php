@@ -9,7 +9,7 @@
 					<li>Quienes Somos</li>
 					<li>Siguenos</li>
 					<li>
-						<a href="#"><img src="<?=base_url()?>img/face2.png" title="nuestra página en facebook" alt="facebook" /></a>
+						<a href="https://www.facebook.com/OficialIscoComputadoras?fref=ts" target="_blank"><img src="<?=base_url()?>img/face2.png" title="nuestra página en facebook" alt="facebook" /></a>
 						<a href="#"><img src="<?=base_url()?>img/twi.png" title="siguenos en twitter" alt="twitter" /></a>
 					</li>
 				</ul>
@@ -18,17 +18,19 @@
 				<h3>CATEGORIAS</h3> 
 				<ul>
 					<?php foreach ($query->result() as $cat) { ?>
-					<li><a href=""><?= $cat->nombre ?></a></li>
+					<li><a href="<?=base_url()?>categoria/<?=$cat->id_categoria?>"><?= $cat->nombre ?></a></li>
 						
 					<?php } ?>
 					
 				</ul>
 			</li>
 			<li>
-				<h3>SERVICIOS</h3> 
+				<h3>PRINCIPALES SERVICIOS</h3> 
 				<ul>
-					<li>Quienes Somos</li>
-					<li>Información legal</li>
+					<?php foreach ($principalserv->result() as $serv) { ?>
+					<?php $url = strtolower($serv->titulo); $url = str_replace(" ", "-", $url); ?>
+					<li><a href="<?=base_url()?>anuncios/<?=$url?>/<?=$serv->id?>"><?= $serv->titulo ?></a></li>
+					<?php } ?>
 				</ul>
 			</li>
 			<li>
@@ -51,5 +53,3 @@
 <script src="<?=base_url()?>js/jquery.bxslider.min.js"></script>
 <script src="<?=base_url()?>js/main.js"></script>
 
-</body>
-</htm>	

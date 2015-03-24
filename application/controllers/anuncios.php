@@ -16,6 +16,7 @@ class Anuncios extends CI_Controller {
 
 	function getFooter(){
 		$data['query']=$this->ModelCategorias->getCategoriasLimit();
+		$data['principalserv'] = $this->ModelHome->getServPrin();
 		$this->load->view('includes/footer',$data);
 	}
 
@@ -25,11 +26,17 @@ class Anuncios extends CI_Controller {
 		$this->getHeader();
 		$this->load->view('site/aviso',$data);
 		$this->getFooter();
+		$this->load->view('includes/endfile');
 
 	}
 
+	function servicios(){
+		
+	}
+
 	function getHeader(){
-		$data['query']=$this->ModelCategorias->getCategoriasLimit();
+		$data['categorias']=$this->ModelCategorias->getCategorias();
+		$data['servicios'] = $this->ModelHome->getServicios();
 		$this->load->view('includes/header',$data);
 	}
 }

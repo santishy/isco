@@ -7,10 +7,6 @@
 			<?php } else {?>
 			<li><a href="#"><img src="<?=base_url()?>img/2.jpg" alt=""></a></li>
 			<?php } ?>
-			<li><a href="#"><img src="<?=base_url()?>img/2.jpg" alt=""></a></li>
-			<li><a href="#"><img src="<?=base_url()?>img/3.jpg" alt=""></a></li>
-			<li><a href="#"><img src="<?=base_url()?>img/4.jpg" alt=""></a></li>
-			<li><a href="#"><img src="<?=base_url()?>img/5.jpg" alt=""></a></li>
 		</ul>
 	</div>
 	<!-- end SliderContainer-->
@@ -81,24 +77,16 @@
 	<aside class="lateral">
 		<h3>Recomendados</h3>
 		<section class="recomendados">
-			<article>
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Laptop </figcaption>
-				</figure>
-			</article>
-			<article>
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Laptop </figcaption>
-				</figure>
-			</article>
-			<article>
-				<figure class="imagen">
-					<img src="<?=base_url()?>img/lap.jpg" alt="" />
-					<figcaption>Laptop </figcaption>
-				</figure>
-			</article>
+			<?php foreach ($recomendados->result() as $rec) {?>
+			<a href="<?=base_url()?>productos/<?=$rec->id_producto?>">
+				<article>
+					<figure class="imagen">
+						<img src="<?=base_url()?>uploads/<?=$rec->imagen?>" alt="" />
+						<figcaption><?=$rec->nombreProd?></figcaption>
+					</figure>
+				</article>
+			</a>	
+			<?php } ?>
 			
 		</section>
 
@@ -107,6 +95,15 @@
 	<!-- start section services -->
 	<section class="services">
 		<h3>Servicios</h3>
+		<?php if($principalserv->num_rows() > 0){ foreach($principalserv->result() as $s) { ?>
+		<?php  $url = strtolower($s->titulo); $url = str_replace(" ", "-", $url); ?> 
+			<div>
+				<a href="<?=base_url()?>anuncios/<?=$url?>/<?=$s->id?>" class="lnkNormal">
+					<p></p>
+					<p><?=$s->titulo?></p> 
+				</a>
+			</div>
+		<?php } } else { ?>
 		<div>
 			<a href="" class="lnkNormal">
 				<p></p>
@@ -131,4 +128,5 @@
 				<p>Redes</p> 
 			</a>
 		</div>
+		<?php } ?>
 	</section> <!-- end services-->

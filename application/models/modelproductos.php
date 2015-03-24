@@ -10,6 +10,28 @@ class ModelProductos extends CI_Model
 		$query=$this->db->insert('productos',$data);
 		return $query;
 	}
+
+	function getProductsCat($id,$prod){
+		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen)
+		 from imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion
+		,1,50) as des,nombreProd from productos where id_categoria ='.$id.' and id_producto != '.$prod.'
+		order by id_producto desc limit 4');
+		return $query;
+	}
+
+	function countCat($id){
+		$query = $this->db->query('select count(*)as cantidad from productos where id_categoria = '.$id.' ');
+		return $query;
+	}
+
+	function prodCat($id,$limite,$tope){
+		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen)
+		 from imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion
+		,1,50) as des,nombreProd from productos where id_categoria ='.$id.' order by id_producto desc
+		limit '.$limite.','.$tope.' ');
+		return $query;
+	}
+
 	function maxId()
 	{
 		$query=$this->db->query('select max(id_producto) as id_producto from productos');
