@@ -73,7 +73,7 @@
 						<?php } ?>
 					</ul>
 				</li>
-				<li><a href="#">CONTACTO</a></li>
+				<li><a href="<?=base_url()?>contacto">CONTACTO</a></li>
 			</ul>
 		</nav>
 	</div>

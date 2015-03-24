@@ -9,7 +9,7 @@ class ModelHome extends CI_Model
 	function getSlider(){
 		$this->db->where("slider",true);
 		$this->db->order_by('id desc');
-		$this->db->limit(6);
+		$this->db->limit(8);
 		$query = $this->db->get('servicios');
 		return $query;
 
@@ -77,6 +77,25 @@ class ModelHome extends CI_Model
 		productos where destacado=false and oferta = false order by id_producto desc limit 4');
 		return $query;
 
+	}
+
+	function countSearch($pattern){
+		$query = $this->db->query('select count(distinct p.id_producto) as result from 
+		productos p inner join caracteristicas c on p.id_producto=c.id_producto join especificaciones e 
+		on e.id_producto=p.id_producto where p.nombreprod like '.%$pattern%.' or  p.descripcion like '.%$pattern%.' 
+		or c.caracteristica like '.%$pattern%.' or e.especificacion like '.%$pattern%.';');
+		retur $query;
+	}
+
+	function search($pattern,$rows,$limit){
+		$query = $this->db->query('select distinct(select ruta from imagenes where id_imagen=(select min(id_imagen) from 
+			imagenes where id_producto=p.id_producto))as imagen,p.id_producto, 
+		p.nombreprod,p.descripcion from productos p inner join caracteristicas c on 
+		p.id_producto=c.id_producto join especificaciones e on e.id_producto=p.id_producto 
+		where p.nombreprod like '.%$pattern%.' or  p.descripcion like '.%$pattern%.' 
+		or c.caracteristica like '.%$pattern%.' or e.especificacion like '.%$pattern%.' 
+		order by p.id_producto desc limit '.$rows.','.$limit.';');
+		retur $query;
 	}
 
 }
