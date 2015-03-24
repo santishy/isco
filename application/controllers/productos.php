@@ -4,6 +4,7 @@ class Productos extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+		$this->load->library('pagination');
 		$this->load->model('ModelCategorias');
 		$this->load->model('ModelProductos');
 		$this->load->model('ModelHome');
@@ -49,8 +50,6 @@ class Productos extends CI_Controller {
 		
 	}
 
-	function categoria($id){
-		echo 'hello';
-	}
+	
 	
 }

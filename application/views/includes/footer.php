@@ -18,7 +18,7 @@
 				<h3>CATEGORIAS</h3> 
 				<ul>
 					<?php foreach ($query->result() as $cat) { ?>
-					<li><a href="<?=base_url()?>productos/categoria/<?=$cat->id_categoria?>"><?= $cat->nombre ?></a></li>
+					<li><a href="<?=base_url()?>categoria/<?=$cat->id_categoria?>"><?= $cat->nombre ?></a></li>
 						
 					<?php } ?>
 					
