@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1 , maximum-scale=1" />
 	<title>isco</title>
-
+	<link rel="shortcut icon" type="image/png" href="<?=base_url()?>img/favicon.png">	
 	<!-- styles -->
 	<link href='http://fonts.googleapis.com/css?family=Jura:500' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Coda' rel='stylesheet' type='text/css'>
@@ -66,7 +66,7 @@
 						<?php } ?>
 					</ul>
 				</li>
-				<li><a href="">PRODUCTOS</a>
+				<li><a href="#">PRODUCTOS</a>
 					<ul>
 						<?php foreach ($categorias->result() as $cat) { ?>
 						<li><a href="<?=base_url()?>categoria/<?=$cat->id_categoria?>"><?= $cat->nombre ?></a></li>

@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 	 $("nav a").each(function() {
 		 var el = $(this);
-		 if(el.attr("href") != ""){
+		 if(el.attr("href") == "#"){
 		 	 $("<option />", {
 			     "value"   : el.attr("href"),
 			     "text"    :'---'+el.text()+'---',
