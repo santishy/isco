@@ -16,6 +16,7 @@ class Contacto extends CI_Controller {
 		$this->getHeader();
 		$this->load->view('site/contacto');
 		$this->getFooter();
+		$this->load->view('includes/mapa');
 		$this->load->view('includes/endfile');
 	}
 
