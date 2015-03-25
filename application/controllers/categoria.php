@@ -68,3 +68,4 @@ class Categoria extends CI_Controller {
 	
 	
 }
+?>

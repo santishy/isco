@@ -14,7 +14,7 @@ class ModelProductos extends CI_Model
 	function getProductsCat($id,$prod){
 		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen)
 		 from imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion
-		,1,50) as des,nombreProd from productos where id_categoria ='.$id.' and id_producto != '.$prod.'
+		,1,50) as des,nombreprod from productos where id_categoria ='.$id.' and id_producto != '.$prod.'
 		order by id_producto desc limit 4');
 		return $query;
 	}
@@ -27,7 +27,7 @@ class ModelProductos extends CI_Model
 	function prodCat($id,$limite,$tope){
 		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen)
 		 from imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion
-		,1,50) as des,nombreProd from productos where id_categoria ='.$id.' order by id_producto desc
+		,1,50) as des,nombreprod from productos where id_categoria ='.$id.' order by id_producto desc
 		limit '.$limite.','.$tope.' ');
 		return $query;
 	}

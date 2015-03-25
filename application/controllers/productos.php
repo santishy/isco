@@ -53,3 +53,4 @@ class Productos extends CI_Controller {
 	
 	
 }
+?>

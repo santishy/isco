@@ -33,15 +33,15 @@
 		</div>
 		<div class="follow">
 			<div class="contact">
-					LLamanos <strong>01 353 532 7373 y 01 353 532 5500	</strong>
+				<strong>01 353 532 7373 y 01 353 532 5500	</strong>
 			</div>
 			<!--<div class="social">
 				<a href="#"><img src="<?=base_url()?>img/face2.png" title="nuestra página en facebook" alt="facebook" /></a>
 				<a href="#"><img src="<?=base_url()?>img/twi.png" title="siguenos en twitter" alt="twitter" /></a>
 			</div>-->
 			<div class="search">
-				<form action="">
-					<input type="search" id="txtSearch" class="txtSearch" placeholder="Búsqueda" />
+				<form action="<?=base_url()?>inicio/busqueda" method="post">
+					<input type="search" name="txtpattern" class="txtSearch" placeholder="Búsqueda" required />
 					<input type="submit" value="">
 				</form>
 			</div>

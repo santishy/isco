@@ -2,14 +2,20 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
+	<title>APP</title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/materialize.min.css" media="screen,projection">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<style>
+		.divLogin{
+			margin-top:7%;
+		}
+
+	</style>
 	<script  src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="<?=base_url()?>js/materialize.min.js"></script>
-	<title>APP</title>
 </head>
 <body class="cyan darken-1">
-	<div class="row" >
+	<div class="row divLogin" >
 	<div class="col s4 offset-s4">
 		<div class="card-panel   light-2">
 			<h4 style="text-align:center">Ingresar</h4>

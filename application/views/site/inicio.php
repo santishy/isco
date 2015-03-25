@@ -22,7 +22,7 @@
 						<a href="<?=base_url()?>productos/<?=$offer->id_producto?>">
 							<figure class="imagen">
 								<img src="<?=base_url()?>uploads/<?=$offer->imagen?>" alt="">
-								<figcaption><?=$offer->nombreProd?></figcaption>
+								<figcaption><?=$offer->nombreprod?></figcaption>
 							</figure>
 						</a>
 						<!--<div><?=$offer->des?></div>-->
@@ -43,7 +43,7 @@
 						<a href="<?=base_url()?>productos/<?=$dest->id_producto?>">
 							<figure class="imagen">
 								<img src="<?=base_url()?>uploads/<?=$dest->imagen?>" alt="">
-								<figcaption><?=$dest->nombreProd?></figcaption>
+								<figcaption><?=$dest->nombreprod?></figcaption>
 							</figure>
 						</a>
 						<!--<div><?=$offer->des?></div>-->
@@ -62,7 +62,7 @@
 						<a href="<?=base_url()?>productos/<?=$new->id_producto?>">
 							<figure class="imagen">
 								<img src="<?=base_url()?>uploads/<?=$new->imagen?>" alt="">
-								<figcaption><?=$new->nombreProd?></figcaption>
+								<figcaption><?=$new->nombreprod?></figcaption>
 							</figure>
 						</a>
 						<!--<div><?=$offer->des?></div>-->
@@ -82,7 +82,7 @@
 				<article>
 					<figure class="imagen">
 						<img src="<?=base_url()?>uploads/<?=$rec->imagen?>" alt="" />
-						<figcaption><?=$rec->nombreProd?></figcaption>
+						<figcaption><?=$rec->nombreprod?></figcaption>
 					</figure>
 				</article>
 			</a>	

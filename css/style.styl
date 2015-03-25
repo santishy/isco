@@ -127,13 +127,45 @@ a.lnkNormal
 	&:hover
 		text-decoration none
 
+.btnSub		
+	margin-top 10px
+	text-align center
+	input[type="submit"]
+		background-color azul_oscuro
+		border none
+		box-shadow 0px 3px 5px rgba(#000,0.5)
+		color white		
+		padding 10px
+
 .clear
 	clear both	
 	
 .container 
 	min-height 300px
-	margin 1.5em auto
+	margin 2.5em auto
 	width 90%
+	
+.container		
+	
+	h1
+		font-size 16px
+		text-align center
+	.contacto
+		float left
+		margin-right 5%
+		width 30%
+		
+		.frmContact
+			border 2px solid rgba(azul_oscuro,0.7)
+			border-radius 3px
+			margin-left 10%
+			padding 10px
+			width 80%
+			label
+				color azul_oscuro
+	.mapa
+		float left
+		width 60%		
 	
 .detailPro
 	background-color rgba(#cbcbcb,0.5)
@@ -261,10 +293,8 @@ footer
 						display block
 						font-size 12px
 						width 80%
+				
 		
-		
-
-	
 header
 	height auto
 	overflow hidden
@@ -421,7 +451,13 @@ header
 						display block
 					border-top 7px solid #000
 					
-						
+input[type="text"],input[type="email"]
+	border-radius 2px	
+	padding 2px	
+	width 70%
+
+	&:focus
+		border 2px solid rgba(azul_oscuro,0.5)				
 					
 .lateral
 	width 19%
@@ -638,7 +674,13 @@ table
 		th.espe
 			background-color rgba(#000,0.5)
 			
-
+textarea
+	border-radius 3px
+	padding 5px
+	width 90%
+	
+	&:focus
+		border 1px solid rgba(azul_oscuro,0.5)
 				
 .uno
 	transform translateX(-52px)	

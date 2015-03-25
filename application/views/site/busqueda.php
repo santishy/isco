@@ -16,9 +16,6 @@
 				</div>
 			<?php } ?>
 		</div>
-		<div class="paginacion">
-			<?=$paginacion?>
-		</div>
 	</section> 
 
 </div>

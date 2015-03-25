@@ -39,7 +39,7 @@ class ModelHome extends CI_Model
 	function getOffer(){
 		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
 			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
-			as des,nombreProd from 
+			as des,nombreprod from 
 		productos  where oferta=true and destacado=false order by id_producto desc limit 4');
 		return $query;
 
@@ -48,7 +48,7 @@ class ModelHome extends CI_Model
 	function getDestacados(){
 		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
 			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
-			as des,nombreProd from 
+			as des,nombreprod from 
 		productos where destacado=true and oferta=false order by id_producto desc limit 4');
 		return $query;
 
@@ -57,7 +57,7 @@ class ModelHome extends CI_Model
 	function getRecomendados(){
 		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
 			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
-			as des,nombreProd from 
+			as des,nombreprod from 
 		productos where destacado=true and oferta = true order by id_producto desc limit 3');
 		return $query;
 	}
@@ -73,29 +73,29 @@ class ModelHome extends CI_Model
 	function getNuevos(){
 		$query = $this->db->query('select (select ruta from imagenes where id_imagen=(select min(id_imagen) from 
 			imagenes where id_producto=productos.id_producto))as imagen , id_producto,substring(descripcion,1,50)
-			as des,nombreProd from 
+			as des,nombreprod from 
 		productos where destacado=false and oferta = false order by id_producto desc limit 4');
 		return $query;
 
 	}
 
 	function countSearch($pattern){
-		$query = $this->db->query('select count(distinct p.id_producto) as result from 
+		$query = $this->db->query('select count(distinct p.id_producto) as cantidad from 
 		productos p inner join caracteristicas c on p.id_producto=c.id_producto join especificaciones e 
-		on e.id_producto=p.id_producto where p.nombreprod like '.%$pattern%.' or  p.descripcion like '.%$pattern%.' 
-		or c.caracteristica like '.%$pattern%.' or e.especificacion like '.%$pattern%.';');
-		retur $query;
+		on e.id_producto=p.id_producto where p.nombreprod like "%'.$pattern.'%" or  p.descripcion like "%'.$pattern.'%"
+		or c.caracteristica like "%'.$pattern.'%" or e.especificacion like "%'.$pattern.'%";');
+		return $query;
 	}
 
-	function search($pattern,$rows,$limit){
+	function search($pattern){
 		$query = $this->db->query('select distinct(select ruta from imagenes where id_imagen=(select min(id_imagen) from 
 			imagenes where id_producto=p.id_producto))as imagen,p.id_producto, 
 		p.nombreprod,p.descripcion from productos p inner join caracteristicas c on 
 		p.id_producto=c.id_producto join especificaciones e on e.id_producto=p.id_producto 
-		where p.nombreprod like '.%$pattern%.' or  p.descripcion like '.%$pattern%.' 
-		or c.caracteristica like '.%$pattern%.' or e.especificacion like '.%$pattern%.' 
-		order by p.id_producto desc limit '.$rows.','.$limit.';');
-		retur $query;
+		where p.nombreprod like "%'.$pattern.'%" or  p.descripcion like "%'.$pattern.'%"
+		or c.caracteristica like "%'.$pattern.'%" or e.especificacion like "%'.$pattern.'%" 
+		order by p.id_producto desc ;');
+		return $query;
 	}
 
 }

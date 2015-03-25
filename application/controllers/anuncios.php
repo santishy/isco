@@ -40,3 +40,4 @@ class Anuncios extends CI_Controller {
 		$this->load->view('includes/header',$data);
 	}
 }
+?>
