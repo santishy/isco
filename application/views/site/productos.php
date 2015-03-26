@@ -61,7 +61,7 @@
 						<a href="<?=base_url()?>productos/<?=$rel->id_producto?>">
 							<figure class="imagen">
 								<img src="<?=base_url()?>uploads/<?=$rel->imagen?>" alt="">
-								<figcaption><?=$rel->nombreProd?></figcaption>
+								<figcaption><?=$rel->nombreprod?></figcaption>
 							</figure>
 						</a>
 						<!--<div><?=$offer->des?></div>-->
