@@ -6,17 +6,6 @@ azul = #6BC0EA
 naranja = #FD640A
 verde = #01AC0E
 
-@font-face {
-	font-family: 'iconos';
-	src:url('../font/icomoon.eot?guw6kg');
-	src:url('../font/icomoon.eot?#iefixguw6kg') format('embedded-opentype'),
-		url('../font/icomoon.woff?guw6kg') format('woff'),
-		url('../font/icomoon.ttf?guw6kg') format('truetype'),
-		url('../font/icomoon.svg?guw6kg#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
 /* mixins */
 
 boxProducts(color)
@@ -53,8 +42,6 @@ containerProducts(color)
 	width 90%
 	
 	
-.dos 
-	transform translateX(50px)		
 	
 iconServices(icono,color)	
 	p:first-child
@@ -105,6 +92,16 @@ titleProducts()
 	
 /* */	
 	
+@font-face {
+	font-family: 'iconos';
+	src:url('../font/icomoon.eot?guw6kg');
+	src:url('../font/icomoon.eot?#iefixguw6kg') format('embedded-opentype'),
+		url('../font/icomoon.woff?guw6kg') format('woff'),
+		url('../font/icomoon.ttf?guw6kg') format('truetype'),
+		url('../font/icomoon.svg?guw6kg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}	
 			
 body,html
 	font-family: 'Coda', cursive;
@@ -113,6 +110,7 @@ body,html
 	padding 0
 	max-width 100%
 	width 100%
+	
 	
 a 
 	color #000
@@ -251,6 +249,10 @@ a.lnkNormal
 .divCategoria , aside.offer
 	margin-top 2.5em
 	min-height 300px
+	
+	
+.dos 
+	transform translateX(50px)	
 	
 footer
 	background-color #cbcbcb

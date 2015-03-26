@@ -92,7 +92,7 @@ class Usuarios extends CI_Controller {
 					$this->session->set_userdata('user',$row->user);
 					$this->session->set_userdata('tipo',$row->tipo);
 				}
-				redirect('admin/addProducto');
+				redirect(base_url().'admin/addProducto');
 			}
 			else
 			{
