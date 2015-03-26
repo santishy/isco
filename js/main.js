@@ -38,6 +38,10 @@ $(document).ready(function(){
 	  	}
 	});
 
+	 $("nav.navResp select").change(function() {
+ 		 window.location = $(this).find("option:selected").val();
+	});
+
 	 /* button top */
 	$(window).scroll(function(){
    		if ($(this).scrollTop() > 50) {

@@ -21,12 +21,36 @@ class Contacto extends CI_Controller {
 	}
 
 	function sendMail(){
-		$this->email->from($this->input->post('txtemail'));
-		$this->email->to('njl27@hotmail.com');
+		$configGmail = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'iscoshy@gmail.com',
+            'smtp_pass' => 'IscoShy1*%@',
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n"
+        );    
+ 
+        //cargamos la configuración para enviar con gmail
+        $this->email->initialize($configGmail);
+ 
+		$this->email->from($this->input->post('txtemail'),$this->input->post('txtname'));
+		$this->email->to('francisco@grupoisco.com');
 		$this->email->subject($this->input->post('txttitle'));
-		$this->email->message($this->input->post('txtmensaje'));
-		$this->email->send();
-		  var_dump($this->email->print_debugger());
+		$this->email->message('<p>Email enviado desde '.$this->input->post('txtemail').'</p>'.$this->input->post('txtmensaje'));
+		//$this->email->send();
+	  	//var_dump($this->email->print_debugger());
+	  	$data['msj']='';
+	  	if($this->email->send())
+	  		$data['msj'] = "Tu correo ha sido enviado correctamente , en breve estaremos en contacto ";
+	  	else
+	  		$data['msj'] = 'No hemos podido enviar tu mensaje intentalo mas tarde';
+	  	$this->getHeader();
+	  	$this->load->view('site/msj',$data);
+	  	$this->getFooter();
+	  	$this->load->view('includes/endfile');
+
 
 	}
 
